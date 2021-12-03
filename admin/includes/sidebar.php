@@ -34,7 +34,7 @@
             <ul class="vertical-nav-menu">
                 <li class="app-sidebar__heading">Dashboards</li>
                 <li>
-                    <a href="index.html" class="mm-active">
+                    <a href="index.html"  id="manage-dash">
                         <i class="metismenu-icon pe-7s-rocket"></i>
                         Main Dashboard
                     </a>
@@ -43,16 +43,15 @@
 
 
                 <li>
-                    <a href="manage_users.php">
+                    <a href="manage_admin.php" id="manage-admins">
                         <i class="metismenu-icon fas fa-user-cog"></i>
-
                         Admins
                     </a>
 
                 </li>
                 <li>
 
-                    <a href="manage_users.php">
+                    <a href="manage_users.php" id="manage-users">
                         <i class="metismenu-icon fas fa-user"></i>
                         Users
                     </a>
@@ -60,27 +59,26 @@
                 </li>
                 <li class="app-sidebar__heading">Categories & Items</li>
                 <li>
-                    <a href="manage_categories.php">
+                    <a href="manage_categories.php" id="manage-cat">
                         <i class="metismenu-icon fas fa-list-ul"></i>
                         Categories
                     </a>
                 </li>
                 <li>
-                    <a href="manage_items.php">
+                    <a href="manage_items.php" id="manage-item" class="">
                         <i class="metismenu-icon fas fa-prescription-bottle-alt"></i>
                         Items
                     </a>
                 </li>
                 <li class="app-sidebar__heading">Hisory & Comments</li>
                 <li>
-                    <a href="manage_history.php">
+                    <a href="manage_history.php" id="manage-history">
                         <i class="metismenu-icon   fas fa-history"></i>
                         History
                     </a>
                 </li>
                 <li>
-                    <a href="manage_comments.php">
-
+                    <a href="manage_comments.php" id="manage-comments">
                         <i class="metismenu-icon fas fa-comments"></i>
                         Comments
                     </a>

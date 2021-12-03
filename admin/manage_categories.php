@@ -204,3 +204,7 @@ if(isset($_GET["method"])){
         </div>
     </div>
 </div>
+<script>
+    document.getElementById("manage-cat").classList.add("mm-active")
+</script>
+<script type="text/javascript" src="./assets/scripts/main.js"></script>

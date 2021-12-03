@@ -2,7 +2,6 @@
 include("includes/config.php");
 //CRUD MySQL
 //1.Creat Item
-$target_dir = "uploads/"; //For Upload Images
 $rand=rand(1000,2000);    //For Upload Images
 if (isset($_POST['submit'])) {
     $item_name        = $_POST['item_name'];
@@ -13,8 +12,8 @@ if (isset($_POST['submit'])) {
     $item_price_offer = $_POST['item_price_offer'];
     $item_image       = "IMG-"."$rand".basename($_FILES["item_img"]["name"]); //For Upload Images
     $temp_name        = $_FILES["item_img"]["tmp_name"];                     //For Upload Images
-    $target_dir       = "uploads/$item_image";                            //For Upload Images
-    $item_date        = date('Y-m-d H:i:s');
+    $target_dir       = "assets/item_images/$item_image";                            //For Upload Images
+    $item_date        = date('Y-m-d');
     move_uploaded_file($temp_name,$target_dir);
     $insert           = "INSERT INTO item (item_name, item_title, cat_id, item_desc, item_price, price_offer, item_image, item_date) 
                          VALUES ('$item_name','$item_title','$item_cat','$item_desc','$item_price','$item_price_offer','$item_image',
@@ -23,7 +22,12 @@ if (isset($_POST['submit'])) {
     echo "<meta http-equiv='refresh' content='0'>";
 }
 //2.Read
-$query        = "SELECT * FROM item";
+$cat_query = "SELECT * FROM category";
+$cat_query_result = mysqli_query($conn, $cat_query);
+$query        = "SELECT item_id,item_name,item_title,item_desc,item.cat_id as item_cat_id,item_price,price_offer,
+                        item_date,item_image, category.cat_name 
+                FROM category,item 
+                WHERE category.cat_id=item.cat_id";
 $query_result = mysqli_query($conn, $query);
 //3.Edit
  if (isset($_GET['method'])) {
@@ -35,7 +39,7 @@ $query_result = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($select_result);
         $item_nameE        = $row['item_name'];
         $item_titleE       = $row['item_title'];
-        $item_catE         = $row['car_id'];
+        $item_catE         = $row['cat_id'];
         $item_descE        = $row['item_desc'];
         $item_priceE       = $row['item_price'];
         $item_price_offerE = $row['price_offer'];
@@ -98,8 +102,9 @@ include("includes/header.php");
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">Item Category</label>
                                     <select  class="form-control" name="item_cat" id="validationCustom03"  required>
-                                            <option value="">Select Category</option>
-                                            <option value="1">Corona</option>
+                                    <option value="">Select Category</option>
+                                        <?php while ($row = mysqli_fetch_assoc($cat_query_result)) {?>
+                                            <option value="<?php echo $row['cat_id'];?>"><?php echo $row['cat_name'];} ?></option>
                                     </select>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -109,7 +114,7 @@ include("includes/header.php");
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
                                     <label for="validationCustom04">Item Description</label>
-                                    <textarea value = "<?php echo @$item_descE?>" name="item_desc" type="text" class="form-control" id="validationCustom03" placeholder="Item Description" required></textarea>
+                                    <textarea name="item_desc" type="text" class="form-control" id="validationCustom03" placeholder="Item Description" required><?php echo @$item_descE?></textarea>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -166,10 +171,10 @@ include("includes/header.php");
                                     <th>Category</th>
                                     <th>Price</th>
                                     <th>Price Offer</th>
-                                    <th>Comments</th>
                                     <th>Item Date</th>
                                     <th>Image</th>
-                                    <th>Edit/Delete</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -179,19 +184,22 @@ include("includes/header.php");
                                     <td><?php echo $row['item_name'];?></td>
                                     <td><?php echo $row['item_title'];?></td>
                                     <td><?php echo $row['item_desc'];?></td>
-                                    <td><?php echo $row['cat_id'];?></td>
+                                    <td><?php echo $row['cat_name'];?></td>
                                     <td><?php echo $row['item_price'];?></td>
                                     <td><?php echo $row['price_offer'];?></td>
-                                    <td>Comments</td>
                                     <td><?php echo $row['item_date'];?></td>
                                     <td><img width="90px" height="90px" src="assets/item_images/<?php echo $row['item_image'];?>" alt=""></td>
                                     <td>
-                                        <div class="table-data-feature ml-3" >
+                                        <div class="table-data-feature" >
                                             <a href="http://localhost/pharmacy/admin/manage_items.php?method=edit&id=<?php echo $row['item_id'];?>" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="fas fa-edit mr-3"></i>
+                                            <button  type="submit" name="delete_admin" class="btn btn-success btn-sm">EDIT</button>
                                             </a>
+                                        </div>
+                                    </td>
+                                    <td>    
+                                        <div>
                                             <a href="http://localhost/pharmacy/admin/manage_items.php?method=delete&id=<?php echo $row['item_id'];?>" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="fas fa-trash-alt" style="color:red"></i>
+                                            <button type="submit" name="delete_admin" class="btn btn-danger btn-sm">DELETE</button>
                                             </a>
                                         </div>
                                     </td>
@@ -205,4 +213,7 @@ include("includes/header.php");
     </div>
   </div>
 </div>
+<script>
+    document.getElementById("manage-item").classList.add("mm-active")
+</script>
 <script type="text/javascript" src="./assets/scripts/main.js"></script>

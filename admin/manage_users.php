@@ -146,3 +146,7 @@
         </div>
     </div>
 </div>
+<script>
+    document.getElementById("manage-users").classList.add("mm-active")
+</script>
+<script type="text/javascript" src="./assets/scripts/main.js"></script>

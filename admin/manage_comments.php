@@ -64,3 +64,7 @@
     </div>
   </div>
 </div>
+<script>
+    document.getElementById("manage-comments").classList.add("mm-active")
+</script>
+<script type="text/javascript" src="./assets/scripts/main.js"></script>

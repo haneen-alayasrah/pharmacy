@@ -1,8 +1,8 @@
 
-        <?php include("header.php");?>
+        <?php include("includes/header.php");?>
         <div class="app-main">
            
-            <?php include ("sidebar.php");?>
+            <?php include ("includes/sidebar.php");?>
             <div class="app-main__outer">
                 
                 <div class="app-wrapper-footer">

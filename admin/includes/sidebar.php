@@ -67,14 +67,12 @@
                 </li>
                 <li>
                     <a href="manage_items.php">
-                        <i class=""></i>
                         <i class="metismenu-icon fas fa-prescription-bottle-alt"></i>
                         Items
                     </a>
                 </li>
                 <li class="app-sidebar__heading">Hisory & Comments</li>
                 <li>
-
                     <a href="manage_history.php">
                         <i class="metismenu-icon   fas fa-history"></i>
                         History
@@ -87,8 +85,6 @@
                         Comments
                     </a>
                 </li>
-
-
             </ul>
         </div>
     </div>

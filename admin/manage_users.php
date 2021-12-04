@@ -60,7 +60,7 @@
             <div class="col">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <h5 class="card-title">Admin</h5>
+                        <h5 class="card-title">Add New User</h5>
                         <form method="POST" class="needs-validation" novalidate>
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
@@ -91,18 +91,8 @@
                                 </div>
 
                             </div>
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                    <label class="form-check-label" for="invalidCheck">
-                                        Agree to terms and conditions
-                                    </label>
-                                    <div class="invalid-feedback">
-                                        You must agree before submitting.
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary" type="submit" name="submit">Submit form</button>
+
+                            <button class="btn btn-primary" type="submit" name="submit">Add</button>
                         </form>
 
                         <script>
@@ -140,7 +130,7 @@
                 ?>
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <h5 class="card-title">Table striped</h5>
+                        <h5 class="card-title">User Data</h5>
                         <table class="mb-0 table table-striped">
                             <thead>
                                 <tr>
@@ -150,7 +140,7 @@
                                     <th>Last-Login</th>
                                     <th>Date-Created</th>
                                     <th> Edit  </th>
-                                    <th> Del</th>
+                                    <th> Delete</th>
                                 </tr>
                             </thead>
                             <tbody>

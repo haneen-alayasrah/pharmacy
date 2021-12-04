@@ -96,7 +96,7 @@ if(isset($_GET["method"])){
             <div class="col">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <h5 class="card-title">Manage Categories</h5>
+                        <h5 class="card-title">Add New Categories</h5>
                         <form class="needs-validation" novalidate  method="post" enctype="multipart/form-data">
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
@@ -121,7 +121,7 @@ if(isset($_GET["method"])){
                                 
                             </div>
                             
-                            <button class="btn btn-primary" style="display:<?php echo (@$_GET["method"]!="edit")?'':'none'; ?>" name="add_category" type="submit">Add Category</button>
+                            <button class="btn btn-primary" style="display:<?php echo (@$_GET["method"]!="edit")?'':'none'; ?>" name="add_category" type="submit">Add </button>
                             <input type="submit" name="edit_btn" style="display:<?php echo (@$_GET["method"]=="edit")?'':'none'; ?>" class="btn btn-secondary btn-sm" value="Edit Category">
 
                         </form>
@@ -156,14 +156,16 @@ if(isset($_GET["method"])){
 
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <h5 class="card-title">Table striped</h5>
+                        <h5 class="card-title">Category Data</h5>
                         <table class="mb-0 table table-striped">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Category Name</th>
                                     <th>Category Image</th>
-                                    <th></th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -186,7 +188,8 @@ if(isset($_GET["method"])){
                                                            <button  type="submit" name="edit_btn" class="btn btn-success btn-sm"> EDIT</button>
                                                         </a> 
                                                         
-                                                       
+                                </td>
+                                <td>
                                                             <a href="manage_categories.php?method=delete&&id=<?php echo $row_cat["cat_id"];?>">
                                                             <button type="submit" name="delete_admin" class="btn btn-danger btn-sm"> DELETE</button>
                                                         </a>

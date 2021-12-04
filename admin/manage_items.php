@@ -82,7 +82,7 @@ include("includes/header.php");
             <div class="row-lg-6">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <h5 class="card-title">Items</h5>
+                        <h5 class="card-title">Add New Items</h5>
                         <form class="needs-validation" novalidate method="post" enctype='multipart/form-data' >
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
@@ -132,8 +132,8 @@ include("includes/header.php");
                                     <input name="item_img" type="file" class="form-control " id="validationCustom05" required>
                                 </div>
                             </div>
-                            <button  style="display:<?php echo (@$_GET["method"]=="edit")?'none':''; ?>"name="submit" class="btn btn-primary" type="submit">Add Item</button>
-                            <button style="display:<?php echo (@$_GET["method"]=="edit")?'':'none'; ?>;" name="edit" class="btn btn-danger" type="submit">Edit Item</button>
+                            <button  style="display:<?php echo (@$_GET["method"]=="edit")?'none':''; ?>"name="submit" class="btn btn-primary" type="submit">Add </button>
+                            <button style="display:<?php echo (@$_GET["method"]=="edit")?'':'none'; ?>;" name="edit" class="btn btn-danger" type="submit">Edit </button>
                         </form>
                         <script>
                             // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -160,7 +160,7 @@ include("includes/header.php");
             <div class="row-lg-12">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <h5 class="card-title">Table striped</h5>
+                        <h5 class="card-title">Items Data</h5>
                         <table class="mb-0 table table-striped">
                             <thead>
                                 <tr>
@@ -183,7 +183,7 @@ include("includes/header.php");
                                     <th scope="row"><?php echo $row['item_id'];?></th>
                                     <td><?php echo $row['item_name'];?></td>
                                     <td><?php echo $row['item_title'];?></td>
-                                    <td><?php echo $row['item_desc'];?></td>
+                                    <td ><?php echo $row['item_desc'];?></td>
                                     <td><?php echo $row['cat_name'];?></td>
                                     <td><?php echo $row['item_price'];?></td>
                                     <td><?php echo $row['price_offer'];?></td>

@@ -34,7 +34,7 @@
                   <th># Comment Id</th>
                   <th>User Id</th>
                   <th>Comment Statement</th>
-                  <th>Action</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,7 +50,7 @@
                       <td><?php echo $row["comment_statment"]; ?></td>
                       <td>
                         <a href="manage_comments.php?method=delete&&id=<?php echo $row["comment_id"] ?>">
-                          <i class="bi bi-trash-fill" style="color: red; font-size: 26px"></i>
+                        <button type="submit"  class="btn btn-danger btn-sm">DELETE</button>
                         </a>
                       </td>
                     </tr>

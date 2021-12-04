@@ -38,7 +38,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="assets/images/baner-right-image-01.jpg">
+                                        <img src="assets/images/land.jpg">
                                     </div>
                                 </div>
                             </div>

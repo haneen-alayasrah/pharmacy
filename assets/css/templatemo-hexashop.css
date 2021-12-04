@@ -654,31 +654,41 @@ banner
   border-bottom: 3px dotted #eee;
   padding-top: 160px;
   padding-bottom: 30px;
+  
+
 }
+
 
 .main-banner .left-content .thumb img {
   width: 100%;
   overflow: hidden;
+  /* height: 700px; */
+
+
+
 }
 
 .main-banner .left-content .inner-content {
+  
   position: absolute;
   left: 100px;
   top: 50%;
   transform: translateY(-50%);
+
 }
 
 .main-banner .left-content .inner-content h4 {
-  color: #fff;
+  color: #00008E;
   margin-top: -10px;
   font-size: 52px;
   font-weight: 700;
   margin-bottom: 20px;
+  
 }
 
 .main-banner .left-content .inner-content span {
   font-size: 16px;
-  color: #fff;
+  color: #00008E;
   font-weight: 400;
   font-style: italic;
   display: block;
@@ -708,7 +718,7 @@ banner
 }
 
 .main-banner .right-content .right-first-image .thumb .inner-content h4 {
-  color: #fff;
+  color: #00008E;
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 15px;
@@ -716,7 +726,7 @@ banner
 
 .main-banner .right-content .right-first-image .thumb .inner-content span {
   font-size: 16px;
-  color: #fff;
+  color: #00008E;
   font-style: italic;
 }
 

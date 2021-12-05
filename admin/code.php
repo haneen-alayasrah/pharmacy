@@ -6,8 +6,8 @@
 	$admin_name= $_POST['admin_name'];
 	$admin_email= $_POST['admin_email'];
 	$admin_password=$_POST['admin_password'];
-
-    $query = "INSERT INTO admin (admin_name,admin_email,admin_password) VALUES ('$admin_name' , '$admin_email' , '$admin_password' )" ;
+	$date               = date('Y-m-d');
+    $query = "INSERT INTO admin (admin_name,admin_email,admin_password,admin_date_create) VALUES ('$admin_name' , '$admin_email' , '$admin_password','$date' )" ;
     $query_run = mysqli_query($conn , $query);
 
 	if($query_run)

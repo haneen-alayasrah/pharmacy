@@ -110,6 +110,7 @@ https://templatemo.com/tm-571-hexashop
                                     </li>
                                 </ul>
                             </li>
+                            <li style="display:<?php echo@$display; ?> ;"><a href="account/login.php"><i class="fas fa-shopping-cart"></i></a></li>
        
                            
                            

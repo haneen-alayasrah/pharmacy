@@ -8,8 +8,6 @@
 <?php include("includes/sidebar.php"); ?>
 
     <div class="app-main__outer">
-
-
         <div class="app-main__inner">
             <div class="col">
                 <div class="main-card mb-3 card">

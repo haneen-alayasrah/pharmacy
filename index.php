@@ -12,10 +12,7 @@ include("admin/includes/config.php");
                         <div class="thumb">
                             <div class="inner-content">
                                 <h4 class='p-3 mb-2 bg-white ' style="opacity: .75;">We Are A Pharmacy</h4>
-                                <span>Awesome, clean &amp; creative HTML5 Template</span>
-                                <div class="main-border-button">
-                                    <a href="#"  class='p-3 mb-2 bg-white' >Purchase Now!</a>
-                                </div>
+                               
                             </div>
                             <img src="assets/images/main.png" alt="">
                         </div>
@@ -46,9 +43,7 @@ include("admin/includes/config.php");
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="admin/assets/categories_images/<?php echo $row_cat["cat_image"]; ?>" width="100%" height="300px" style='  border-style: groove;
-  border-width: 2px;
-  border-color: blue; '>
+                                        <img src="admin/assets/categories_images/<?php echo $row_cat["cat_image"]; ?>" width="100%" height="300px" style='  border-style: groove;border-width: 2px;border-color: blue; '>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +88,6 @@ include("admin/includes/config.php");
                                     <div class="hover-content">
                                         <ul>
                                             <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-star"></i></a></li>
                                             <li><a href="<?php echo ($_SESSION['login']=='true')?"money/addToCart.php?id={$row_item['item_id']}" :"#"?>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
@@ -150,7 +144,6 @@ include("admin/includes/config.php");
                                     <div class="hover-content">
                                         <ul>
                                         <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-star"></i></a></li>
                                             <li><a href="money/addToCart.php?id=<?php echo$row_item['item_id'];?>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
@@ -206,7 +199,7 @@ include("admin/includes/config.php");
                                     <div class="hover-content">
                                         <ul>
                                         <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-star"></i></a></li>
+                                          
                                             <li><a href="money/addToCart.php?id=<?php echo$row_item['item_id'];?>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
@@ -222,7 +215,6 @@ include("admin/includes/config.php");
  
 
                                     <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>

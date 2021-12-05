@@ -15,15 +15,19 @@ if ($_SESSION['login']=='true'){
     $users_query        = "SELECT * FROM user WHERE user_id=$id";
     $users_query_result = mysqli_query($conn,$users_query);
     $row                = mysqli_fetch_assoc($users_query_result);
+    $row['user_fullname'] = explode(" ",$row['user_fullname']);
+    $row['user_fullname'] = $row['user_fullname'][0];
 }
 if (isset($_POST['logout'])){
     $_SESSION['login']='false';
     header('Location:http://localhost/pharmacy/account/login.php');
 }
-function addToCart($item_id){
+function addToCart($item_id,$link){
     array_push($_SESSION['cart']['items'],$item_id);
-    print_r($_SESSION['cart']['items']);
-    header("Location:http://localhost/pharmacy/index.php");
+    if ($link!='no') {
+        header("Location:http://localhost/pharmacy/index.php");
+    }else header("Location:http://localhost/pharmacy/single-product.php?added=yes&id=$item_id");
+
     }
     
 ?>
@@ -45,6 +49,8 @@ function addToCart($item_id){
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="../assets/css/templatemo-hexashop.css">
 
@@ -80,8 +86,8 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="../assets/images/logoo.png" width="100px" height="80px">
+                        <a href="http://localhost/pharmacy/index.php" class="logo">
+                            <img src="../assets/images/logoo2.png" width="100px" height="80px">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->

@@ -48,9 +48,11 @@ print_r($_SESSION['login']=='true');
 					<span class="qt-minus">-</span>
 					<span class="qt">1</span>
 					<span class="qt-plus">+</span>
+					<button type="button" style="width: 70; height:48px;" class="btn btn-outline-danger qt"><i class="bi bi-trash"></i></button>
+				
 
 					<h2 class="full-price">
-						<?php echo $row['item_price']." $"?>
+						<?php $full_price += $row['item_price']; echo $row['item_price']." $"?>
 					</h2>
 
 					<h2 class="price">
@@ -62,24 +64,25 @@ print_r($_SESSION['login']=='true');
 			
         </section>
 		<?php endwhile;?>
-	</div>
-
-	<footer id="site-footer">
+		<footer id="site-footer">
 		<div class="container clearfix">
 
 			<div class="left">
-				<h2 class="subtotal">Subtotal: <span>163.96</span>$</h2>
-				<h3 class="tax">Taxes (5%): <span>8.2</span>$</h3>
-				<h3 class="shipping">Shipping: <span>5.00</span>$</h3>
+				<h2 class="subtotal">Subtotal: <span>0</span>$</h2>
+				<h3 style="display: none;" class="tax">Taxes (5%): <span>0</span>$</h3>
+				<h3 class="shipping"style="display: none;" >Shipping: <span>0.00</span>$</h3>
 			</div>
 
 			<div class="right">
-				<h1 class="total">Total: <span>177.16</span>$</h1>
+				<h1 class="total">Total: <span><?php echo $full_price?></span>$</h1>
 				<a class="btn" href="index.php?id=1" >Checkout</a>
 			</div>
 
 		</div>
 	</footer>
 
+	</div>
+
+	
 	<?php }?>
 	

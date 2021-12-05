@@ -1,8 +1,9 @@
 <?php include("./admin/includes/config.php"); ?>
 
 <?php
-  $fetch_query = "SELECT * FROM item WHERE item_id=" . $_GET["id"];
-  $result = $conn->query($fetch_query);
+$fetch_query = "SELECT * FROM item WHERE item_id=" . $_GET["id"];
+$result = $conn->query($fetch_query);
+
 ?>
 
 <?php include("header.php"); ?>
@@ -11,12 +12,7 @@
 <div class="page-heading" id="top">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12">
-        <div class="inner-content">
-          <h2>Single Product Page</h2>
-          <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
-        </div>
-      </div>
+     
     </div>
   </div>
 </div>
@@ -24,7 +20,7 @@
 
 <?php
 
-  $row = $result->fetch_assoc();
+$row = $result->fetch_assoc();
 
 ?>
 
@@ -65,25 +61,37 @@
           </div>
           <div class="total">
             <h4>Total: <?php echo "$" . $row["item_price"]; ?></h4>
-            <div class="main-border-button"><a href="#">Add To Cart</a></div>
+            <div class="main-border-button"><a href="<?php echo ($_SESSION['login'] == 'true') ? "money/addToCart.php?m=no&id={$_GET['id']}" : "#" ?>">Add To Cart</a></div>
           </div>
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div  class="col-md-8">
+        <div style="display: none;" id="myP1" class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+          <strong>The item Added Successfully </strong> 
+          <button   type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+   
 
-    <?php 
-    
-      if (isset($_POST["publish-comment"])) {
+    <?php
 
-        $comment_statment = $_POST["comment-input"];
+    if (isset($_POST["publish-comment"])) {
 
-        $add_query = "INSERT INTO comments (user_id,comment_statment,item_id) VALUES ('{$_SESSION['users']['id']}','$comment_statment',{$_GET['id']})";
+      $comment_statment = $_POST["comment-input"];
 
-        $res = mysqli_query($conn, $add_query);
+      $add_query = "INSERT INTO comments (user_id,comment_statment,item_id) VALUES ('{$_SESSION['users']['id']}','$comment_statment',{$_GET['id']})";
 
-        echo "<meta http-equiv='refresh' content='0'>";
+      $res = mysqli_query($conn, $add_query);
 
-      }
+      echo "<meta http-equiv='refresh' content='0'>";
+    }
 
     ?>
 
@@ -93,7 +101,7 @@
         <form method="POST" class="needs-validation" novalidate>
           <div class="form-row">
             <div class="col-md-12 mb-8">
-              <textarea name="comment-input"class="form-control" id="validationCustom01"placeholder="Write Comment" cols="600" rows="7"></textarea>
+              <textarea name="comment-input" class="form-control" id="validationCustom01" placeholder="Write Comment" cols="600" rows="7"></textarea>
               <!-- <input type="text"  id="validationCustom01"  value="" required name="comment-input"> -->
               <div class="valid-feedback">
                 Looks good!
@@ -105,8 +113,8 @@
       </div>
 
       <?php
-        $fetch_query = "SELECT user_fullname,comment_statment FROM comments,user where comments.user_id = user.user_id and item_id = {$_GET['id']} ";
-        $result = $conn->query($fetch_query);
+      $fetch_query = "SELECT user_fullname,comment_statment FROM comments,user where comments.user_id = user.user_id and item_id = {$_GET['id']} ";
+      $result = $conn->query($fetch_query);
       ?>
 
       <?php while ($row = $result->fetch_assoc()) : ?>
@@ -127,4 +135,13 @@
 </section>
 <!-- ***** Product Area Ends ***** -->
 <!-- ***** Subscribe Area Ends ***** -->
-<?php include("footer.php"); ?>
+<?php include("footer.php");
+if (isset($_GET['added'])) {?>
+  <script>
+ 
+      document.getElementById("myP1").style.display = "block";
+     
+  </script>
+   <?php
+ }
+ ?>

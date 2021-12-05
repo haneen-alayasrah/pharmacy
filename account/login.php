@@ -1,6 +1,41 @@
 <?php 
 include("../admin/includes/config.php");
+session_start();
+if ($_SESSION['login']=='true'){
+    header("Location: http://localhost/pharmacy");
+    die();
+}
+unset($_SESSION['users']);
+// unset($_SESSION);
+$_SESSION['admin']='false';
+$_SESSION['login']='false';
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
 if (isset($_POST['login'])) {
+    $admins_query        = "SELECT * FROM admin";
+    $admins_query_result = mysqli_query($conn,$admins_query);
+    while($row = mysqli_fetch_assoc($admins_query_result)){
+    if ($_POST['email']==$row['admin_email']){
+        $user = false;
+        $pass               = $_POST['pass'];
+        $email              = $_POST['email'];
+        $id                 = $row['admin_id'];
+        if ($pass==$row['admin_password']){
+            $date               = date('Y-m-d');
+            $add_date_query     = "UPDATE admin SET admin_last_login = '$date' WHERE admin_id = $id";
+            mysqli_query($conn,$add_date_query);
+            $_SESSION['admin']='true';
+            $_SESSION['admins']['id']=$id;
+            header("Location: http://localhost/pharmacy/admin");
+         
+    }else{
+        $passC = false;     
+        $passM="Your Password Incorrect";
+        }
+        break;
+    }
+    else{
     $users_query        = "SELECT * FROM user";
     $users_query_result = mysqli_query($conn,$users_query);
     $check              = false;
@@ -9,8 +44,15 @@ if (isset($_POST['login'])) {
         $check              = true;
         $pass               = $_POST['pass'];
         $email              = $_POST['email'];
+        $id                 = $row['user_id'];
         if ($pass==$row['user_password']){
-        header('Location: http://localhost/pharmacy/');
+            $id                 = $row['user_id'];
+            $date               = date('Y-m-d');
+            $add_date_query     = "UPDATE user SET user_last_login = '$date' WHERE user_id = $id";
+            mysqli_query($conn,$add_date_query);
+            $_SESSION['login']='true';
+            $_SESSION['users']['id']=$id;
+            header("Location: http://localhost/pharmacy");
         }else{
         $passC = false;     
         $passM="Your Password Incorrect";
@@ -20,8 +62,8 @@ if (isset($_POST['login'])) {
     if ($check==false) {
         $registerM = "You Dont Have an Account, Pleas Creat an Account";
         $class     = 'false';
-    }
-}
+    }}
+}}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +123,7 @@ if (isset($_POST['login'])) {
                                 <input type="submit" name="login" id="signin" class="form-submit" value="Log in"/>
                             </div>
                             <?php
-                                  if (@$$check==false) {
+                                  if (@$check==false) {
                                       echo "<div class='false'>";
                                       echo @$registerM . "<br>";
                                       echo "</div>";

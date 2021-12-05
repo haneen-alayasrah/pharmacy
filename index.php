@@ -1,10 +1,8 @@
-<?php include("header.php");
+<?php 
+include("header.php");
 include("admin/includes/config.php"); 
-
-
 ?>
     <!-- ***** Header Area End ***** -->
-
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
         <div class="container-fluid">

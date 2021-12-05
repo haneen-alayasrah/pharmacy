@@ -1,4 +1,10 @@
 <?php 
+session_start();
+if ($_SESSION['login']=='true'){
+    header("Location: http://localhost/pharmacy");
+    die();
+}
+$_SESSION['login']='false';
 include("../admin/includes/config.php");
 $emailFormat  = "/^[A-ZA-z0-9._-]+@(hotmail|gmail|yahoo|outlook).com$/";
 $phoneFormat = "/^07[7-9][0-9]{7}$/";
@@ -66,12 +72,12 @@ if ($register1 == true && $register2 == true && $register3 == true && $register4
     }  
         if ($check == false){
         $registerM          = "You are Already Have an Account";
-        $register           = true;
+        $register           = "cant";
         $class              = 'false';
         }
         if ($check == true){
         $registerM          = "You Have Register Successfully";
-        $register           = true;
+        $register           = "can";
         $class              = 'true';
         $name               = $_POST['name'];
         $email              = $_POST['email'];
@@ -161,13 +167,24 @@ array_push($errors, $error1, $error2, $error3, $error4, $error5);
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Sign Up"/>
                             </div>
                             <?php
-                                  if ($register) {
+                                  if ($register=="can") {
+                                    // echo "<div class=$class>";
+                                    // echo $registerM . "<br>";
+                                    // echo "<a href='login.php' class='true-login'>Log In</a>";
+                                    // echo "</div>";
+                                    $users_query        = "SELECT * FROM user WHERE user_email='$email'";
+                                    $users_query_result = mysqli_query($conn,$users_query);
+                                    $row = mysqli_fetch_assoc($users_query_result);
+                                    $_SESSION['login']='true';
+                                    $_SESSION['users']['id']=$row['user_id'];
+                                    header('Location: http://localhost/pharmacy');
+                                  } elseif ($register=="cant") {
                                     echo "<div class=$class>";
                                     echo $registerM . "<br>";
                                     echo "<a href='login.php' class='true-login'>Log In</a>";
                                     echo "</div>";
-                                    // header('Location: http://localhost/pharmacy');
-                                  } else {
+                                  }
+                                  else {
                                       foreach ($errors as $value) {
                                           echo "<div class='error'>";
                                           echo $value;

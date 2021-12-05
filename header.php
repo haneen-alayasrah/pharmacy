@@ -1,11 +1,32 @@
-
+<?php 
+include "admin/includes/config.php";
+session_start();
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+if ($_SESSION['login']=='true'){
+    $display = 'none';
+}
+if ($_SESSION['login']=='false'){
+    $display2 = 'none';
+}
+if ($_SESSION['login']=='true'){
+    $id                 = $_SESSION['users']['id'];
+    $users_query        = "SELECT * FROM user WHERE user_id=$id";
+    $users_query_result = mysqli_query($conn,$users_query);
+    $row                = mysqli_fetch_assoc($users_query_result);
+}
+if (isset($_POST['logout'])){
+    $_SESSION['login']='false';
+    header('Location: http://localhost/pharmacy/account/login.php');
+}
+?>
                                 
 
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -72,11 +93,24 @@ https://templatemo.com/tm-571-hexashop
                                 </ul>
                             </li>
                             <li><a href="about.php">About Us</a></li>
-                                   
-                                   
                                    <li><a href="contact.php">Contact Us</a></li>
-                                   <li><a href="account/signup.php">Sign Up</a></li>
-                                   <li><a href="account/login.php">Log In</a></li>
+                                   <li style="display:<?php echo@$display; ?> ;"><a href="account/signup.php">Sign Up</a></li>
+                                   <li style="display:<?php echo@$display; ?> ;"><a href="account/login.php">Log In</a></li>
+
+                            <li style="display:<?php echo@$display2; ?> ;" class="submenu">
+                                <a href="javascript:;"><?php echo @$row['user_fullname'] ?></a>
+                                  <ul>
+                                    <li class="scroll-to-section"><a href="products.php?id=1">User Profile</a></li>
+                                    <li class="scroll-to-section">
+                                      <a href="products.php?id=2">
+                                        <form action="" method="POST">
+                                          <button name="logout" style="border: none;background-color:inherit">Logout</button>
+                                        </form>
+                                      </a>
+                                    </li>
+                                </ul>
+                            </li>
+       
                            
                            
                         </ul>        

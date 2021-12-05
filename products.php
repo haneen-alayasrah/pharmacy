@@ -66,7 +66,6 @@ $query_run = mysqli_query($conn, $query);
                             <div class="hover-content">
                                 <ul>
                                     <li><a href="single-product.php?id=<?php echo $row['item_id']?>"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.php?id=<?php echo $row['item_id']?>"><i class="fa fa-star"></i></a></li>
                                     <li><a href="single-product.php?id=<?php echo $row['item_id']?>"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>

@@ -2306,3 +2306,31 @@ responsive
     opacity: 0;
   }
 }
+.product-badge {
+  position: absolute;
+  height: 25px;
+  padding: 0 20px;
+  border-radius: 3px;
+  color: #fff !important;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .025em;
+  line-height: 24px;
+  white-space: nowrap;
+  top: 0px;
+  left: 8px
+}
+.product-badge1{
+  height: 25px;
+  padding: 0 20px;
+  border-radius: 3px;
+  color: #fff !important;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .025em;
+  line-height: 24px;
+  white-space: nowrap;
+  top: 0px;
+  left: 8px;
+  width: 20%;
+}

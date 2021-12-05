@@ -70,7 +70,7 @@
                         Items
                     </a>
                 </li>
-                <li class="app-sidebar__heading">Hisory & Comments</li>
+                <li class="app-sidebar__heading">Hisory & Comments & coupon</li>
                 <li>
                     <a href="manage_history.php" id="manage-history">
                         <i class="metismenu-icon   fas fa-history"></i>
@@ -81,6 +81,12 @@
                     <a href="manage_comments.php" id="manage-comments">
                         <i class="metismenu-icon fas fa-comments"></i>
                         Comments
+                    </a>
+                </li>
+                <li>
+                    <a href="manage_coupon.php" id="manage-comments">
+                        <i class="metismenu-icon fas fa-percentage"></i>
+                        Coupon
                     </a>
                 </li>
             </ul>

@@ -8,36 +8,32 @@
 <?php include("includes/sidebar.php"); ?>
 
     <div class="app-main__outer">
+
+
         <div class="app-main__inner">
             <div class="col">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <h5 class="card-title">Add New Admin</h5>
+                        <h5 class="card-title">Add New Coupon</h5>
                         <form class="needs-validation" novalidate action="code.php" method="POST">
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom01"> Name</label>
-                                    <input type="text" name='admin_name' class="form-control" id="validationCustom01" placeholder="Inter name" required>
+                                    <label for="validationCustom01"> Coupon Code</label>
+                                    <input type="text" name='coupon_code' class="form-control" id="validationCustom01" placeholder="Inter coupon code" required>
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom02">Email</label>
-                                    <input type="email" name='admin_email' class="form-control" id="validationCustom02" placeholder="Inter Email"  required>
+                                    <label for="validationCustom02">Poupon Percentage</label>
+                                    <input type="text" name='coupon_percentage' class="form-control" id="validationCustom02" placeholder="Inter coupon percentage"  required>
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
                                 </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="validationCustom02">Password</label>
-                                    <input type="password" name='admin_password' class="form-control" id="validationCustom02" placeholder="Inter Password"  required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                </div>
+
                             </div>
-                            <button class="btn btn-primary" type="submit"  name='add_admin'>ADD</button>
+                            <button class="btn btn-primary" type="submit"  name='add_coupon'>ADD</button>
                         </form>
 
                         <script>
@@ -66,7 +62,7 @@
             </div>
             <?php
 
-$query = "SELECT * FROM admin";
+$query = "SELECT * FROM coupon";
 $query_run = mysqli_query($conn, $query);
 ?>
 
@@ -74,16 +70,13 @@ $query_run = mysqli_query($conn, $query);
 
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <h5 class="card-title">Admin Data</h5>
+                        <h5 class="card-title">Coupon Data</h5>
                         <table class="mb-0 table table-striped">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th> Name</th>
-                                    <th>Email</th>
-                                    <th>Password</th>
-                                    <th>Date Create </th>
-                                    <th>Date Login</th>
+                                    <th>Coupon Code</th>
+                                    <th>Coupon Percentage</th>
                                     <th>Edit </th>
                                     <th>Delete</th>
 
@@ -97,23 +90,21 @@ $query_run = mysqli_query($conn, $query);
              {
               ?>
                                 <tr>
-                                    <th scope="row"><?php echo $row ['admin_id'];?></th>
-                                    <td><?php echo $row ['admin_name'];?></td>
-                                    <td><?php echo $row ['admin_email'];?></td>
-                                    <td><?php echo $row ['admin_password'];?></td>
-                                    <td><?php echo $row ['admin_date_create'];?></td>
-                                    <td><?php echo $row ['admin_last_login'];?></td>
+                                    <th scope="row"><?php echo $row ['coupon_id'];?></th>
+                                    <td><?php echo $row ['coupon_code'];?></td>
+                                    <td><?php echo $row ['coupon_percentage'];?>%</td>
+
                                     <td>
-                        <form action="edit_admin.php" method="post">
-                  <input type="hidden" name = "userID" value="<?php echo $row['admin_id']?>" >
+                        <form action="edit_coupon.php" method="post">
+                  <input type="hidden" name = "userID" value="<?php echo $row['coupon_id']?>" >
                     <button  type="submit" name="edit_btn" class="btn btn-success btn-sm"> EDIT</button>
                 </form>
                              
                         </td>
                         <td>
                         <form action="code.php" method="post">
-                  <input type="hidden" name="delete_id" value="<?php echo $row['admin_id']?>">
-                  <button type="submit" name="delete_admin" class="btn btn-danger btn-sm"> DELETE</button>
+                  <input type="hidden" name="delete_id" value="<?php echo $row['coupon_id']?>">
+                  <button type="submit" name="delete_coupon" class="btn btn-danger btn-sm"> DELETE</button>
                 </form>
                            
                         </td>
@@ -136,6 +127,6 @@ $query_run = mysqli_query($conn, $query);
     </div>
 </div>
 <script>
-    document.getElementById("manage-admins").classList.add("mm-active")
+    document.getElementById("manage-coupon").classList.add("mm-active")
 </script>
 <script type="text/javascript" src="./assets/scripts/main.js"></script>

@@ -11,10 +11,10 @@ include("admin/includes/config.php");
                     <div class="left-content">
                         <div class="thumb">
                             <div class="inner-content">
-                                <h4 >We Are A Pharmacy</h4>
+                                <h4 class='p-3 mb-2 bg-white ' style="opacity: .75;">We Are A Pharmacy</h4>
                                 <span>Awesome, clean &amp; creative HTML5 Template</span>
                                 <div class="main-border-button">
-                                    <a href="#">Purchase Now!</a>
+                                    <a href="#"  class='p-3 mb-2 bg-white' >Purchase Now!</a>
                                 </div>
                             </div>
                             <img src="assets/images/main.png" alt="">
@@ -35,19 +35,20 @@ include("admin/includes/config.php");
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="inner-content">
-                                            <h4><?php echo $row_cat["cat_name"]; ?></h4>
-                                            <span>Best Clothes For Women</span>
+                                            <h4 class='p-3 mb-2 bg-white ' style="opacity: .75;"><?php echo $row_cat["cat_name"]; ?></h4>
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4><?php echo $row_cat["cat_name"]; ?></h4>
+                                                <h4 ><?php echo $row_cat["cat_name"]; ?></h4>
                                                 <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
                                                 <div class="main-border-button">
                                                     <a href="products.php?id=<?php echo $row_cat["cat_id"];?>">Discover More</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="admin/assets/categories_images/<?php echo $row_cat["cat_image"]; ?>" width="100%" height="300px">
+                                        <img src="admin/assets/categories_images/<?php echo $row_cat["cat_image"]; ?>" width="100%" height="300px" style='  border-style: groove;
+  border-width: 2px;
+  border-color: blue; '>
                                     </div>
                                 </div>
                             </div>
@@ -209,11 +210,17 @@ include("admin/includes/config.php");
                                             <li><a href="money/addToCart.php?id=<?php echo$row_item['item_id'];?>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
+                                    <div class="product-badge bg-danger border-default text-body">SALE !</div> 
+
                                     <img src="admin/assets/item_images/<?php echo $row_item["item_image"]; ?>" alt="">
                                 </div>
                                 <div class="down-content">
                                     <h4><?php echo $row_item["item_name"]; ?></h4>
-                                    <span><?php echo "$". $row_item["price_offer"]; ?></span>
+                                    
+                                    <span style='text-decoration-line: line-through ; display:inline-block'><?php echo "$". $row_item["item_price"];?> </span>
+                                    <span style='display:inline-block ; color:black ; font-weight:bold'><?php echo "$". $row_item["price_offer"];?> </span>
+ 
+
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
@@ -221,7 +228,9 @@ include("admin/includes/config.php");
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
                                     </ul>
+
                                 </div>
+                                
                             </div>
                             <?php }?>
                         </div>
@@ -238,43 +247,28 @@ include("admin/includes/config.php");
             <div class="row">
                 <div class="col-lg-6">
                     <div class="left-content">
-                        <h2>Explore Our Products</h2>
-                        <span>You are allowed to use this HexaShop HTML CSS template. You can feel free to modify or edit this layout. You can convert this template as any kind of ecommerce CMS theme as you wish.</span>
+                        <h2>COVID-19 vaccines if you live in Jordan</h2>
+                        <span>We will update this page when the Government of Jordan announces new information on the national vaccination programme. You can sign up to get email notifications when this page is updated.</span>
                         <div class="quote">
                             <i class="fa fa-quote-left"></i><p>You are not allowed to redistribute this template ZIP file on any other website.</p>
                         </div>
-                        <p>There are 5 pages included in this HexaShop Template and we are providing it to you for absolutely free of charge at our TemplateMo website. There are web development costs for us.</p>
+                        <p>The Jordanian national vaccination programme started in February 2021 and is using several vaccines including AstraZeneca, Pfizer-BioNTech and Sinopharm. </p>
                         <p>If this template is beneficial for your website or business, please kindly <a rel="nofollow" href="https://paypal.me/templatemo" target="_blank">support us</a> a little via PayPal. Please also tell your friends about our great website. Thank you.</p>
                         <div class="main-border-button">
-                            <a href="products.html">Discover More</a>
+                            <a href="https://www.who.int/ar/emergencies/diseases/novel-coronavirus-2019" target:_blank>Discover More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="right-content">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="leather">
-                                    <h4>Leather Bags</h4>
-                                    <span>Latest Collection</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
+
+                            <div class="col-lg-12">
                                 <div class="first-image">
-                                    <img src="admin/assets/categories_images/6730Face Coverings & Masks.jpeg" alt="">
+                                    <img src="assets/images/corona.jpg" alt="">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="second-image">
-                                    <img src="admin/assets/item_images/IMG-1836kingfa.jpeg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="types">
-                                    <h4>Different Types</h4>
-                                    <span>Over 304 Products</span>
-                                </div>
-                            </div>
+  
+
                         </div>
                     </div>
                 </div>

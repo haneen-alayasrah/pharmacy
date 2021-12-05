@@ -6,7 +6,7 @@ if ($_SESSION['login']=='true'){
     die();
 }
 unset($_SESSION['users']);
-// unset($_SESSION);
+// unset($_SESSION['admins']);
 $_SESSION['admin']='false';
 $_SESSION['login']='false';
 echo "<pre>";
@@ -15,8 +15,9 @@ echo "</pre>";
 if (isset($_POST['login'])) {
     $admins_query        = "SELECT * FROM admin";
     $admins_query_result = mysqli_query($conn,$admins_query);
+    $num_rows = mysqli_num_rows($admins_query_result);
     while($row = mysqli_fetch_assoc($admins_query_result)){
-    if ($_POST['email']==$row['admin_email']){
+    if ($num_rows>0 && $_POST['email']==$row['admin_email']){
         $user = false;
         $pass               = $_POST['pass'];
         $email              = $_POST['email'];

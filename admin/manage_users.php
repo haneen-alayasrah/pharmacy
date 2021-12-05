@@ -1,8 +1,6 @@
 <?php include("includes/config.php"); ?>
 <?php include("includes/header.php"); ?>
 
-
-
 <div class="app-main">
     <?php include("includes/sidebar.php"); ?>
 
@@ -15,7 +13,10 @@
             $user = [
                 'name' => $_POST['name'],
                 'email' => $_POST['email'],
-                'password' => $_POST['password']
+                'password' => $_POST['password'],
+                'phone' => $_POST['phone'],
+                'city' => $_POST['city']
+
             ];
             if (isset($_GET['method'])) {
                
@@ -23,15 +24,17 @@
                
             $insert = "UPDATE user SET user_fullname = '{$user['name']}',
                                         user_email  = '{$user['email']}',
-                                        user_password = '{$user['password']}' where user_id = {$_GET['id']}";
+                                        user_password = '{$user['password']}',
+                                        user_phone = {$user['phone']},
+                                        user_city = '{$user['city']}' where user_id = {$_GET['id']}";
             if($conn->query($insert)){
                 echo "";  
             } else echo $insert." -- ".$conn->error;  
         }
             }else{
            
-            $insert = "INSERT INTO user(user_fullname,user_email,user_password,user_date_create)
-                              VALUES ('{$user['name']}','{$user['email']}','{$user['password']}','$item_date')";
+            $insert = "INSERT INTO user(user_fullname,user_email,user_password,user_phone,user_city,user_date_create)
+                              VALUES ('{$user['name']}','{$user['email']}','{$user['password']}',{$user['phone']},'{$user['city']}','$item_date')";
             if($conn->query($insert)){
                 echo "";  
             } else echo $insert." -- ".$conn->error;  
@@ -89,6 +92,20 @@
                                         Please provide a valid password.
                                     </div>
                                 </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="validationCustom04">Phone</label>
+                                    <input type="text" name="phone"  value="<?php echo @$result['user_phone'];?>" class="form-control" id="validationCustom04" placeholder="Phone" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid Phone.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="validationCustom04">City</label>
+                                    <input type="text" name="city"  value="<?php echo @$result['user_city'];?>" class="form-control" id="validationCustom04" placeholder="City" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid city.
+                                    </div>
+                                </div>
 
                             </div>
 
@@ -137,6 +154,8 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>City</th>
                                     <th>Last-Login</th>
                                     <th>Date-Created</th>
                                     <th> Edit  </th>
@@ -149,6 +168,8 @@
                                     <th scope="row"><?php echo $row['user_id']?></th>
                                     <td><?php echo $row['user_fullname']?></td>
                                     <td><?php echo $row['user_email']?></td>
+                                    <td><?php echo $row['user_phone']?></td>
+                                    <td><?php echo $row['user_city']?></td>
                                     <td><?php echo $row['user_last_login']?></td>
                                     <td><?php echo $row['user_date_create']?></td>
                                     <td>

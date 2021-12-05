@@ -127,6 +127,7 @@ a:hover {
 	border: 1px solid #ccc;
 	border-style: none none solid none;
 	float: left;
+	
 }
 
 .product header {
@@ -177,6 +178,7 @@ a:hover {
 	height: 140px;
 	padding: 0 20px;
 	width: 75%;
+	
 }
 
 .product h1 {

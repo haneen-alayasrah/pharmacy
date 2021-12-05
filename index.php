@@ -4,7 +4,7 @@ include("admin/includes/config.php");
 
 ?>
     <!-- ***** Header Area End ***** -->
-<?php?>
+
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
         <div class="container-fluid">

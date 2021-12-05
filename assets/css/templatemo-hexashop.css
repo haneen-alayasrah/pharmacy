@@ -1773,6 +1773,7 @@ Single Product Page
 .total .main-border-button a {
   border-color: #2a2a2a;
   color: #2a2a2a;
+
 }
 
 .total .main-border-button a:hover {
@@ -1917,7 +1918,7 @@ About Us Page
   width: 44px;
   height: 44px;
   background-color: #2a2a2a;
-  color: #fff;
+  color: #00008E;
   display: inline-block;
   text-align: center;
   line-height: 44px;
@@ -2305,4 +2306,32 @@ responsive
   100% {
     opacity: 0;
   }
+}
+.product-badge {
+  position: absolute;
+  height: 25px;
+  padding: 0 20px;
+  border-radius: 3px;
+  color: #fff !important;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .025em;
+  line-height: 24px;
+  white-space: nowrap;
+  top: 0px;
+  left: 8px
+}
+.product-badge1{
+  height: 25px;
+  padding: 0 20px;
+  border-radius: 3px;
+  color: #fff !important;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .025em;
+  line-height: 24px;
+  white-space: nowrap;
+  top: 0px;
+  left: 8px;
+  width: 20%;
 }

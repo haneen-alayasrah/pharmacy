@@ -77,32 +77,7 @@
             </form>
 
             <div class="cart rounded">
-                <div class="items">
-                    <div class="item">
-                        <img src="photo1.png" class="rounded img-fluid">
-                        <div class="details">
-                            <p class="item_name">Vintage Backbag</p>
-                            <p class="item_value">$54.99 <span>$94.99</span></p>
-                            <div class="box_counter">
-                                <i class="fa fa-minus-square" onclick="amountChange(1,'-')"></i>
-                                <span class="count">1</span>
-                                <i class="fa fa-plus-square" onclick="amountChange(1,'+')"></i>
-                            </div>
-                        </div>                 
-                    </div>
-                    <div class="item">
-                        <img src="photo2.png" class="rounded img-fluid">
-                        <div class="details">
-                            <p class="item_name">Levi shoes</p>
-                            <p class="item_value">$74.99 <span>$124.99</span></p>
-                            <div class="box_counter">
-                                <i class="fa fa-minus-square" onclick="amountChange(2,'-')"></i>
-                                <span class="count">1</span>
-                                <i class="fa fa-plus-square" onclick="amountChange(2,'+')"></i>
-                            </div>
-                        </div>                 
-                    </div>
-                </div>        
+                        
                 <div class="bottom_row">
                     <p>Shipping</p>
                     <p>$19</p>

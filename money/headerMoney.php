@@ -113,7 +113,7 @@ https://templatemo.com/tm-571-hexashop
                             <li style="display:<?php echo@$display2; ?> ;" class="submenu">
                                 <a href="javascript:;"><?php echo @$row['user_fullname'] ?></a>
                                   <ul>
-                                    <li class="scroll-to-section"><a href="setting.php">User Profile</a></li>
+                                    <li class="scroll-to-section"><a href="http://localhost/pharmacy/setting.php">User Profile</a></li>
                                     <li class="scroll-to-section">
                                       <a href="products.php?id=2">
                                         <form action="" method="POST">

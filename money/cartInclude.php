@@ -1,8 +1,6 @@
-	
-	<?php include("../admin/includes/config.php");?>
-	
+<?php include("../admin/includes/config.php");?>	
 <?php
-print_r($_SESSION['login']=='true');
+
 	if ($_SESSION['login']=='false') {
 	?><script>
 	alert("Go and Login");
@@ -13,8 +11,13 @@ print_r($_SESSION['login']=='true');
 </div>
 <?php
 	}else{
+	if (isset($_GET['id'])) {
+		if (isset($_GET['method'])) {
+		unset($_SESSION['cart']['items'][array_search($_GET['id'],$_SESSION['cart']['items'])]);
+	}
+}
+		
 	$arr=implode(",",($_SESSION['cart']['items']));
-	echo $arr;
 
 	$select = "SELECT * FROM item where item_id in($arr) ";
 	$res = $conn->query($select);
@@ -48,8 +51,9 @@ print_r($_SESSION['login']=='true');
 					<span class="qt-minus">-</span>
 					<span class="qt">1</span>
 					<span class="qt-plus">+</span>
+					<a href="cart.php?method=remove&id=<?php echo $row['item_id']?>">
 					<button type="button" style="width: 70; height:48px;" class="btn btn-outline-danger qt"><i class="bi bi-trash"></i></button>
-				
+					</a>
 
 					<h2 class="full-price">
 						<?php $full_price += $row['item_price']; echo $row['item_price']." $"?>

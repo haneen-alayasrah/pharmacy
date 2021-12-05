@@ -77,7 +77,7 @@
 
         $comment_statment = $_POST["comment-input"];
 
-        $add_query = "INSERT INTO comments (comment_statment) VALUES ('$comment_statment')";
+        $add_query = "INSERT INTO comments (user_id,comment_statment,item_id) VALUES ('{$_SESSION['users']['id']}','$comment_statment',{$_GET['id']})";
 
         $res = mysqli_query($conn, $add_query);
 
@@ -92,19 +92,20 @@
         <h5 class="mb-2">Add Comment</h5>
         <form method="POST" class="needs-validation" novalidate>
           <div class="form-row">
-            <div class="col-md-4 mb-3">
-              <input type="text" class="form-control" id="validationCustom01" placeholder="Write Comment" value="" required name="comment-input">
+            <div class="col-md-12 mb-8">
+              <textarea name="comment-input"class="form-control" id="validationCustom01"placeholder="Write Comment" cols="600" rows="7"></textarea>
+              <!-- <input type="text"  id="validationCustom01"  value="" required name="comment-input"> -->
               <div class="valid-feedback">
                 Looks good!
               </div>
             </div>
           </div>
-          <button class="btn btn-primary" type="submit" name="publish-comment">Publish Comment</button>
+          <button class="btn btn-primary mt-2" type="submit" name="publish-comment">Publish Comment</button>
         </form>
       </div>
 
       <?php
-        $fetch_query = "SELECT * FROM comments";
+        $fetch_query = "SELECT user_fullname,comment_statment FROM comments,user where comments.user_id = user.user_id and item_id = {$_GET['id']} ";
         $result = $conn->query($fetch_query);
       ?>
 
@@ -114,7 +115,7 @@
             <img class="user-img" style="width: 70px;" src="assets/images/user-1.png" alt="">
           </div>
           <div class="user-comment-container d-flex flex-column" style="padding: 10px;">
-            <h5 class="username">Username</h5>
+            <h5 class="username"><?php echo $row["user_fullname"] ?></h5>
             <p class="user-comment">
               <?php echo $row["comment_statment"] ?>
             </p>

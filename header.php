@@ -2,7 +2,7 @@
 include "admin/includes/config.php";
 session_start();
 echo "<pre>";
-print_r($_SESSION);
+// print_r($_SESSION);
 echo "</pre>";
 if ($_SESSION['login']=='true'){
     $display = 'none';
@@ -100,7 +100,7 @@ https://templatemo.com/tm-571-hexashop
                             <li style="display:<?php echo@$display2; ?> ;" class="submenu">
                                 <a href="javascript:;"><?php echo @$row['user_fullname'] ?></a>
                                   <ul>
-                                    <li class="scroll-to-section"><a href="products.php?id=1">User Profile</a></li>
+                                    <li class="scroll-to-section"><a href="setting.php">User Profile</a></li>
                                     <li class="scroll-to-section">
                                       <a href="products.php?id=2">
                                         <form action="" method="POST">

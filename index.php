@@ -81,7 +81,7 @@ include("admin/includes/config.php");
                         <?php
                                 //select item
 
-                                $select_item="SELECT item_name,item_price,item_image FROM item order By item_date DESC limit 7 ";
+                                $select_item="SELECT item_id,item_name,item_price,item_image FROM item order By item_date DESC limit 7 ";
 
                                 
                                 $query_item=mysqli_query($conn,$select_item);
@@ -91,9 +91,9 @@ include("admin/includes/config.php");
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="<?php echo ($_SESSION['login']=='true')?"money/addToCart.php?id={$row_item['item_id']}" :"#"?>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="admin/assets/item_images/<?php echo $row_item["item_image"]; ?>" alt="">
@@ -140,7 +140,7 @@ include("admin/includes/config.php");
                         <?php
                                 //select item
 
-                                $select_item="SELECT item_name,item_price,item_image FROM item WHERE cat_id=2  ";
+                                $select_item="SELECT item_id,item_name,item_price,item_image FROM item WHERE cat_id=2  ";
                                 $query_item=mysqli_query($conn,$select_item);
                                              
                                 while($row_item=mysqli_fetch_assoc($query_item)){ ?>
@@ -148,9 +148,9 @@ include("admin/includes/config.php");
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="money/addToCart.php?id=<?php echo$row_item['item_id'];?>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="admin/assets/item_images/<?php echo $row_item["item_image"]; ?>" alt="">
@@ -196,7 +196,7 @@ include("admin/includes/config.php");
                         <?php
                                 //select item
 
-                                $select_item="SELECT item_name,item_price,item_image,price_offer FROM item order By price_offer DESC limit 7  ";
+                                $select_item="SELECT item_id,item_name,item_price,item_image,price_offer FROM item order By price_offer DESC limit 7  ";
                                 $query_item=mysqli_query($conn,$select_item);
                                              
                                 while($row_item=mysqli_fetch_assoc($query_item)){ ?>
@@ -204,9 +204,9 @@ include("admin/includes/config.php");
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="money/addToCart.php?id=<?php echo$row_item['item_id'];?>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="admin/assets/item_images/<?php echo $row_item["item_image"]; ?>" alt="">

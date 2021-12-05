@@ -1,29 +1,46 @@
+	
 	<?php include("../admin/includes/config.php");?>
-	<?php 
-	$select = "SELECT * FROM item ";
+	
+<?php
+print_r($_SESSION['login']=='true');
+	if ($_SESSION['login']=='false') {
+	?><script>
+	alert("Go and Login");
+	
+</script>
+<div>
+	<a href="../account/login.php">LOGIN</a>
+</div>
+<?php
+	}else{
+	$arr=implode(",",($_SESSION['cart']['items']));
+	echo $arr;
+
+	$select = "SELECT * FROM item where item_id in($arr) ";
 	$res = $conn->query($select);
-	$row=$res->fetch_assoc();
+	
 	$full_price=0;
+	
 	?>
 
     <div class="container">
 		<div style="margin-top: 100px;">
 		<h1>Shopping Cart</h1>
 		</div>
-	
+	<?php while($row=$res->fetch_assoc()):?>
 		<section id="cart"> 
 			<article class="product">
-				<header>
+				<header id="ImgCart">
 				
 						<img src="../admin/assets/item_images/<?php echo $row['item_image']?>" alt="">
 
-				</header>
+	</header>
 
-				<div class="content" style="overflow:auto">
+				<div class="content">
 
 					<h1><?php echo $row['item_name']?></h1>
 
-					<p><?php echo $row['item_desc']?></p>
+					<p><?php echo $row['item_title']?></p>
 
 				</div>
 
@@ -44,43 +61,7 @@
 
 			
         </section>
-		<section id="cart"> 
-			<article class="product">
-				<header>
-				<?php $row=$res->fetch_assoc();?>
-				<?php $row=$res->fetch_assoc();?>
-				<?php $row=$res->fetch_assoc();?>
-				<?php $row=$res->fetch_assoc();?>
-						<img src="../admin/assets/item_images/<?php echo $row['item_image']?>" alt="">
-
-				</header>
-
-				<div class="content" style="overflow:auto">
-
-					<h1><?php echo $row['item_name']?></h1>
-
-					<p><?php echo $row['item_desc']?></p>
-
-				</div>
-
-				<footer class="content">
-					<span class="qt-minus">-</span>
-					<span class="qt">1</span>
-					<span class="qt-plus">+</span>
-
-					<h2 class="full-price">
-						<?php echo $row['item_price']." $"?>
-					</h2>
-
-					<h2 class="price">
-						<?php echo $row['item_price']." $ "?>
-					</h2>
-				</footer>
-			</article>
-
-			
-        </section>
-
+		<?php endwhile;?>
 	</div>
 
 	<footer id="site-footer">
@@ -99,4 +80,6 @@
 
 		</div>
 	</footer>
+
+	<?php }?>
 	

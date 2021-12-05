@@ -15,14 +15,16 @@ if ($_SESSION['login']=='true'){
     $users_query        = "SELECT * FROM user WHERE user_id=$id";
     $users_query_result = mysqli_query($conn,$users_query);
     $row                = mysqli_fetch_assoc($users_query_result);
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart']=['user_id'=>$id,'items'=>[0,-1]];
+    }
+  
 }
 if (isset($_POST['logout'])){
     $_SESSION['login']='false';
     header('Location: http://localhost/pharmacy/account/login.php');
 }
 ?>
-                                
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,8 +112,7 @@ https://templatemo.com/tm-571-hexashop
                                     </li>
                                 </ul>
                             </li>
-       
-                           
+                            <li style="display:<?php echo@$display2; ?> ;"> <i style="padding-top: 13px;"  class="fa fa-shopping-cart"></i></li>
                            
                         </ul>        
                         <a class='menu-trigger'>

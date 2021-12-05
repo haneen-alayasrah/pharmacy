@@ -8,7 +8,6 @@ if ($_SESSION['login']=='true'){
     $display = 'none';
 }
 if ($_SESSION['login']=='false'){
-    unset($_SESSION['cart']);
     $display2 = 'none';
 }
 if ($_SESSION['login']=='true'){
@@ -16,9 +15,6 @@ if ($_SESSION['login']=='true'){
     $users_query        = "SELECT * FROM user WHERE user_id=$id";
     $users_query_result = mysqli_query($conn,$users_query);
     $row                = mysqli_fetch_assoc($users_query_result);
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart']=['user_id'=>$id,'items'=>[0,-1]];
-    }
 }
 if (isset($_POST['logout'])){
     $_SESSION['login']='false';
@@ -101,24 +97,7 @@ https://templatemo.com/tm-571-hexashop
                             <li class="scroll-to-section"><a href="../products.php?id=4">children Health</a></li>
                                 </ul>
                             </li>
-                         <li><a href="about.php">About Us</a></li>
-                                   <li><a href="contact.php">Contact Us</a></li>
-                                   <li style="display:<?php echo@$display; ?> ;"><a href="account/signup.php">Sign Up</a></li>
-                                   <li style="display:<?php echo@$display; ?> ;"><a href="account/login.php">Log In</a></li>
-
-                            <li style="display:<?php echo@$display2; ?> ;" class="submenu">
-                                <a href="javascript:;"><?php echo @$row['user_fullname'] ?></a>
-                                  <ul>
-                                    <li class="scroll-to-section"><a href="setting.php">User Profile</a></li>
-                                    <li class="scroll-to-section">
-                                      <a href="products.php?id=2">
-                                        <form action="" method="POST">
-                                          <button name="logout" style="border: none;background-color:inherit">Logout</button>
-                                        </form>
-                                      </a>
-                                    </li>
-                                </ul>
-                            </li>
+                       
                         </ul>        
         
                         <a class='menu-trigger'>

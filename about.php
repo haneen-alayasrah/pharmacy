@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="left-image">
-                        <img src="assets/images/aboutus.png" alt="">
+                        <img src="assets/images/aboutus.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6">

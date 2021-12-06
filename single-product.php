@@ -36,7 +36,7 @@ $row = $result->fetch_assoc();
       <div class="col-md-2"></div>
     </div>
 <!-- ***** Product Area Starts ***** -->
-<section class="section" id="product">
+<section class="section mt-0" id="product">
   <div class="container">
     <div class="row">
       <div class="col-lg-8">

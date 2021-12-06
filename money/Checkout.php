@@ -28,7 +28,7 @@
      <div class="row">
       <div class="col-md-2"></div>
       <div  class="col-md-8">
-        <div style="display:none;background-color:#0096db ; color:white;"  id="myP1" class="alert alert-dismissible fade show mt-4"  role="alert">
+        <div style="display:none;"  id="myP1" class="alert alert-success fade show mt-4"  role="alert">
           <strong>Your Order Has been taken We will contact you within  2 days </strong> 
           <button   type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>

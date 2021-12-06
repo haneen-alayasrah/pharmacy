@@ -41,7 +41,7 @@
 
 				<div class="content">
 
-					<h1><?php echo $row['item_name']?></h1>
+					<h1 style="color:#0096db"><?php echo $row['item_name']?></h1>
 
 					<p><?php echo $row['item_title']?></p>
 
@@ -55,7 +55,7 @@
 					<button type="button" style="width: 70; height:48px;" class="btn btn-outline-danger qt"><i class="bi bi-trash"></i></button>
 					</a>
 
-					<h2 class="full-price">
+					<h2 class="full-price" style="color:white;background-color:#0096db">
 						<?php $_SESSION['full_price'] += $row['item_price']; echo $row['item_price']." $"?>
 					</h2>
 
@@ -72,14 +72,15 @@
 		<div class="container clearfix">
 
 			<div class="left">
-				<h2 class="subtotal">Subtotal: <span>0</span>$</h2>
 				<h3 style="display: none;" class="tax">Taxes (5%): <span>0</span>$</h3>
 				<h3 class="shipping"style="display: none;" >Shipping: <span>0.00</span>$</h3>
 			</div>
 
 			<div class="right">
 				<h1 class="total">Total: <span><?php echo $_SESSION['full_price'];?></span>$</h1>
-				<a class="btn" href="checkout.php" >Checkout</a>
+				<Button style="background-color:#0096db;color:white;width:100%" class="btn mt-2">
+				<a style="color:white" href="checkout.php" >Checkout</a>
+				</Button>
 			</div>
 
 		</div>

@@ -4,13 +4,22 @@ session_start();
 echo "<pre>";
 // print_r($_SESSION);
 echo "</pre>";
+
+if(isset($_SESSION['login'])){
+    if ($_SESSION['login']=='false') {
+        unset($_SESSION['cart']);
+        $display2 = 'none';
+    }  
+}else{  $display2 = 'none';
+    unset($_SESSION['cart']);
+}
+
+if (isset($_SESSION['login'])) {
+
 if ($_SESSION['login']=='true'){
     $display = 'none';
 }
-if ($_SESSION['login']=='false'){
-    unset($_SESSION['cart']);
-    $display2 = 'none';
-}
+
 if ($_SESSION['login']=='true'){
     $id                 = $_SESSION['users']['id'];
     $users_query        = "SELECT * FROM user WHERE user_id=$id";
@@ -25,6 +34,7 @@ if ($_SESSION['login']=='true'){
 if (isset($_POST['logout'])){
     $_SESSION['login']='false';
     header('Location:http://localhost/pharmacy/account/login.php');
+}
 }
 function addToCart($item_id){
     array_push($_SESSION['cart']['items'],$item_id);

@@ -1,9 +1,13 @@
 <?php 
 include("../admin/includes/config.php");
 session_start();
+if (isset($_SESSION['login'])) {
+   
+
 if ($_SESSION['login']=='true'){
     header("Location: http://localhost/pharmacy");
     die();
+}
 }
 unset($_SESSION['users']);
 // unset($_SESSION['admins']);

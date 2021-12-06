@@ -22,7 +22,7 @@
 	$select = "SELECT * FROM item where item_id in($arr) ";
 	$res = $conn->query($select);
 	
-	$full_price=0;
+	 $_SESSION['full_price']=0;
 	
 	?>
 
@@ -56,7 +56,7 @@
 					</a>
 
 					<h2 class="full-price">
-						<?php $full_price += $row['item_price']; echo $row['item_price']." $"?>
+						<?php $_SESSION['full_price'] += $row['item_price']; echo $row['item_price']." $"?>
 					</h2>
 
 					<h2 class="price">
@@ -78,7 +78,7 @@
 			</div>
 
 			<div class="right">
-				<h1 class="total">Total: <span><?php echo $full_price?></span>$</h1>
+				<h1 class="total">Total: <span><?php echo $_SESSION['full_price'];?></span>$</h1>
 				<a class="btn" href="index.php?id=1" >Checkout</a>
 			</div>
 

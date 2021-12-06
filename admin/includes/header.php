@@ -1,6 +1,8 @@
 <?php 
 include("../admin/includes/config.php");
 session_start();
+if (isset($_SESSION['admin'])) {
+    
 if ($_SESSION['admin']=='false'){
     header("Location: http://localhost/pharmacy");
     die();
@@ -11,6 +13,11 @@ if ($_SESSION['admin']=='true'){
     $admins_query_result = mysqli_query($conn,$admins_query);
     $row                = mysqli_fetch_assoc($admins_query_result);
 }
+}else{
+    header("Location: http://localhost/pharmacy");
+    die();
+}
+
 if (isset($_POST['logout'])){
     $_SESSION['admin']='false';
     header('Location: http://localhost/pharmacy/account/login.php');

@@ -4,12 +4,18 @@ session_start();
 echo "<pre>";
 // print_r($_SESSION);
 echo "</pre>";
+if(isset($_SESSION['login'])){
+    if ($_SESSION['login']=='false') {
+        $display2 = 'none';
+    }  
+}else  $display2 = 'none';
+
+if (isset($_SESSION['login'])) {
+
 if ($_SESSION['login']=='true'){
     $display = 'none';
 }
-if ($_SESSION['login']=='false'){
-    $display2 = 'none';
-}
+
 if ($_SESSION['login']=='true'){
     $id                 = $_SESSION['users']['id'];
     $users_query        = "SELECT * FROM user WHERE user_id=$id";
@@ -21,6 +27,7 @@ if ($_SESSION['login']=='true'){
         $_SESSION['cart']=['user_id'=>$id,'items'=>[0,-1]];
     }
   
+}
 }
 if (isset($_POST['logout'])){
     $_SESSION['login']='false';

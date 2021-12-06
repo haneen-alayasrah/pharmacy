@@ -1,4 +1,6 @@
-<?php include("includes/config.php"); ?>
+<?php
+session_start();
+ include("includes/config.php"); ?>
 
 <?php
 
@@ -8,9 +10,16 @@
 
       $delete_query = "DELETE FROM comments WHERE comment_id=" . $_GET["id"];
 
-      mysqli_query($conn, $delete_query);
-
-      header("location:manage_comments.php");
+     if( mysqli_query($conn, $delete_query)){
+      $_SESSION["status"] = "YOUR DATA IS DELETE" ; 
+      $_SESSION["status_code"] ="success"; 
+      header("location:manage_comments.php"); 
+     }
+     else{
+    	$_SESSION["status"] = "YOUR DATA IS NOT ADD" ; 
+      $_SESSION["status_code"] ="error";
+      header("location:manage_comments.php");}  
+   
 
     }
 
@@ -64,6 +73,8 @@
     </div>
   </div>
 </div>
+<?php include("includes/javascript.php"); 
+   ?>
 <script>
     document.getElementById("manage-comments").classList.add("mm-active")
 </script>

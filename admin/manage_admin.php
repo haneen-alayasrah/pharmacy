@@ -76,6 +76,7 @@ $query_run = mysqli_query($conn, $query);
 
                 <div class="main-card mb-3 card">
                     <div class="card-body">
+
                         <h5 class="card-title">Admin Data</h5>
                         <table class="mb-0 table table-striped">
                             <thead>
@@ -137,6 +138,8 @@ $query_run = mysqli_query($conn, $query);
         </div>
     </div>
 </div>
+<?php include("includes/javascript.php"); 
+   ?>
 <script>
     document.getElementById("manage-admins").classList.add("mm-active")
 </script>

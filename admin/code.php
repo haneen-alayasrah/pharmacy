@@ -1,4 +1,5 @@
 <?php 
+session_start();
       include('includes/config.php');
       if (isset($_POST['add_admin']))
 {  
@@ -12,11 +13,15 @@
 
 	if($query_run)
 	{
+		$_SESSION["status"] = "YOUR DATA IS ADD" ; 
+		$_SESSION["status_code"] ="success";
 		header("Location: manage_admin.php");
 
 	}
 	else
 	{
+		$_SESSION["status"] = "YOUR DATA IS NOT ADD" ; 
+		$_SESSION["status_code"] ="error";
 		header("Location: manage_admin.php");
 		
 
@@ -35,11 +40,15 @@ if (isset($_POST['update_admin']))
 
 	if($query_run)
 	{
+		$_SESSION["status"] = "YOUR DATA IS UPDATED" ; 
+		$_SESSION["status_code"] ="success";
 		header("Location: manage_admin.php");
 
 	}
 	else
 	{
+		$_SESSION["status"] = "YOUR DATA IS NOT UPDATED" ; 
+		$_SESSION["status_code"] ="error";
 		header("Location: manage_admin.php");
 		
 
@@ -55,11 +64,15 @@ if (isset($_POST['delete_admin']))
 
 	if($query_run)
 	{
+		$_SESSION["status"] = "YOUR DATA IS DELETE" ; 
+		$_SESSION["status_code"] ="success";
 		header("Location: manage_admin.php");
 
 	}
 	else
 	{
+		$_SESSION["status"] = "YOUR DATA IS NOT DELETE" ; 
+		$_SESSION["status_code"] ="error";
 		header("Location: manage_admin.php");
 		
 
@@ -76,11 +89,15 @@ if (isset($_POST['add_coupon']))
 
 	if($query_run)
 	{
+		$_SESSION["status"] = "YOUR DATA IS ADD" ; 
+		$_SESSION["status_code"] ="success";
 		header("Location: manage_coupon.php");
 
 	}
 	else
 	{
+		$_SESSION["status"] = "YOUR DATA IS NOT ADD" ; 
+		$_SESSION["status_code"] ="error";
 		header("Location: manage_coupon.php");
 		
 
@@ -98,11 +115,15 @@ if (isset($_POST['update_coupon']))
 
 	if($query_run)
 	{
+		$_SESSION["status"] = "YOUR DATA IS UPDATED" ; 
+		$_SESSION["status_code"] ="success";
 		header("Location: manage_coupon.php");
 
 	}
 	else
 	{
+		$_SESSION["status"] = "YOUR DATA IS NOT UPDATED" ; 
+		$_SESSION["status_code"] ="error";
 		header("Location: manage_coupon.php");
 		
 
@@ -118,11 +139,15 @@ if (isset($_POST['delete_coupon']))
 
 	if($query_run)
 	{
+		$_SESSION["status"] = "YOUR DATA IS DELETE" ; 
+		$_SESSION["status_code"] ="success";
 		header("Location: manage_coupon.php");
 
 	}
 	else
 	{
+		$_SESSION["status"] = "YOUR DATA IS NOT DELETE" ; 
+		$_SESSION["status_code"] ="error";
 		header("Location: manage_coupon.php");
 		
 

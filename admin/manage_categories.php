@@ -1,5 +1,6 @@
 <?php 
 
+session_start();
 
 include("includes/config.php"); 
 
@@ -19,11 +20,13 @@ if(isset($_POST["add_category"])){
     mysqli_query($conn,$insert_category);
     
     if(move_uploaded_file($_FILES["category_image"]["tmp_name"],$destination)){
-    echo  "<h1>yes upload</h1>";
+    $_SESSION["status"] = "YOUR DATA IS ADD" ; 
+    $_SESSION["status_code"] ="success";
     header("location:manage_categories.php");
     }
     else{
-        echo "<h1>not upload</h1>";
+		$_SESSION["status"] = "YOUR DATA IS NOT ADD" ; 
+		$_SESSION["status_code"] ="error";        
         header("location:manage_categories.php");
     }
 
@@ -71,11 +74,13 @@ if(isset($_GET["method"])){
 
         $queryedit=mysqli_query($conn,$edit);
         if(move_uploaded_file($_FILES["category_image"]["tmp_name"],$destination)){
-            echo  "<h1>yes upload</h1>";
+            $_SESSION["status"] = "YOUR DATA IS ADD" ; 
+            $_SESSION["status_code"] ="success";
             header("location:manage_categories.php");
             }
             else{
-                echo "<h1>not upload</h1>";
+                $_SESSION["status"] = "YOUR DATA IS NOT ADD" ; 
+                $_SESSION["status_code"] ="error";
                 header("location:manage_categories.php");
             }
             
@@ -207,6 +212,8 @@ if(isset($_GET["method"])){
         </div>
     </div>
 </div>
+<?php include("includes/javascript.php"); 
+   ?>
 <script>
     document.getElementById("manage-cat").classList.add("mm-active")
 </script>

@@ -69,7 +69,7 @@ $query_run = mysqli_query($conn, $query);
                               <h4><?php echo $row["item_name"]; ?></h4>
                               </a>
                             <span> $<?php echo $row['item_price'];?></span>
-                            <span> <a href=" <?php echo ($_SESSION['login']=='true')?"money/addToCart.php?id={$row['item_id']}" :"#"?>"><Button style="background-color:#0096db;color:white" class="btn mt-2">Add to Cart</Button></a></span>
+                            <span> <a href=" <?php echo ($_SESSION['login']=='true')?"money/addToCart.php?m=s&id={$row['item_id']}" :"#"?>"><Button style="background-color:#0096db;color:white" class="btn mt-2">Add to Cart</Button></a></span>
                             <ul class="stars">
                                 <li><i class="fa fa-star"></i></li>
                                 <li><i class="fa fa-star"></i></li>

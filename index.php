@@ -36,7 +36,6 @@ include("admin/includes/config.php");
                                         <div class="hover-content">
                                             <div class="inner">
                                                 <h4 ><?php echo $row_cat["cat_name"]; ?></h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
                                                 <div class="main-border-button">
                                                     <a href="products.php?id=<?php echo $row_cat["cat_id"];?>">Discover More</a>
                                                 </div>

@@ -156,9 +156,9 @@
 
             <hr class="my-4">
 
-            <button class="w-100 btn btn-primary btn-lg"style="background-color: #0096db;" name="submit_payment" type="submit_payment">Confirm to checkout</button>
+            <button class="w-100 btn btn-primary btn-md"style="background-color: #0096db;" name="submit_payment" type="submit_payment">Confirm to checkout</button>
         </form>
-        <a class="w-100 btn btn-primary btn-lg mt-1" style="background-color: #0096db;" href="http://localhost/pharmacy/index.php">
+        <a class="w-100 btn btn-primary btn-md mt-1" style="background-color: #0096db;" href="http://localhost/pharmacy/index.php">
         Continue Shopping
         </a>
       </div>

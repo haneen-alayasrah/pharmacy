@@ -105,8 +105,9 @@ $row = $result->fetch_assoc();
           </div>
           <button class="btn mt-2" style="background-color:#0096db;color:white" type="submit" name="publish-comment">Publish Comment</button>
         </form>
-      </div>
-
+        <br><br>
+        <h5 class="mb-2">Reviews</h5>
+      <hr>
       <?php
       $fetch_query = "SELECT user_fullname,comment_statment FROM comments,user where comments.user_id = user.user_id and item_id = {$_GET['id']} ";
       $result = $conn->query($fetch_query);
@@ -126,6 +127,7 @@ $row = $result->fetch_assoc();
         </div>
       <?php endwhile; ?>
     </div>
+  </div>
   </div>
 </section>
 <!-- ***** Product Area Ends ***** -->

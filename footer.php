@@ -15,11 +15,12 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <h4>Shopping &amp; Categories</h4>
+                    <h4>Categories</h4>
                     <ul>
-                        <li><a href="#">Men’s Shopping</a></li>
-                        <li><a href="#">Women’s Shopping</a></li>
-                        <li><a href="#">Kid's Shopping</a></li>
+                        <li><a href="products.php?id=1">COVID Testing Kits</a></li>
+                        <li><a href="products.php?id=2">Quit Smoking</a></li>
+                        <li><a href="products.php?id=3">Face Coverings & Masks</a></li>
+                        <li><a href="products.php?id=4">Children Health</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
@@ -27,17 +28,7 @@
                     <ul>
                         <li><a href="index.php">Homepage</a></li>
                         <li><a href="about.php">About Us</a></li>
-                        <li><a href="#">Help</a></li>
                         <li><a href="contact.php">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Help &amp; Information</h4>
-                    <ul>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">FAQ's</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Tracking ID</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-12">

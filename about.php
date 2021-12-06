@@ -40,7 +40,8 @@
         </div>
     </div>
     <!-- ***** About Area Ends ***** -->
-
+    <br><br>
+    <hr>
     <!-- ***** Subscribe Area Starts ***** -->
     <div class="subscribe">
         <div class="container">

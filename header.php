@@ -102,7 +102,7 @@ https://templatemo.com/tm-571-hexashop
                                 <li class="scroll-to-section"><a href="products.php?id=1">COVID Testing Kits</a></li>
                             <li class="scroll-to-section"><a href="products.php?id=2">Quit Smoking</a></li>
                             <li class="scroll-to-section"><a href="products.php?id=3">Face Coverings & Masks</a></li>
-                            <li class="scroll-to-section"><a href="products.php?id=4">children Health</a></li>
+                            <li class="scroll-to-section"><a href="products.php?id=4">Children Health</a></li>
                                 </ul>
                             </li>
                             <li><a href="about.php">About Us</a></li>
@@ -123,9 +123,8 @@ https://templatemo.com/tm-571-hexashop
                                     </li>
                                 </ul>
                             </li>
-                            <li class="ml-2" style="display:<?php echo@$display2; ?> ;transform: scale(0.9);">
+                            <li class="ml-2 mt-1" style="display:<?php echo@$display2; ?> ;transform: scale(0.9);">
                             <a href="http://localhost/pharmacy/money/cart.php">
-                               Cart
                                <i style="transform: scale(2);"  class="fa fa-shopping-cart mt-2 ml-1"></i>
                              </a>
 

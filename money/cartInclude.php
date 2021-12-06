@@ -79,7 +79,7 @@
 
 			<div class="right">
 				<h1 class="total">Total: <span><?php echo $_SESSION['full_price'];?></span>$</h1>
-				<a class="btn" href="index.php?id=1" >Checkout</a>
+				<a class="btn" href="checkout.php" >Checkout</a>
 			</div>
 
 		</div>

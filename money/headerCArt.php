@@ -111,12 +111,19 @@ https://templatemo.com/tm-571-hexashop
                             <li class="scroll-to-section"><a href="../products.php?id=4">children Health</a></li>
                                 </ul>
                             </li>
+                            <li>
+                            <a href="http://localhost/pharmacy/money/cart.php">
+                                Cart
+                             <i style="padding-top: 13px;"  class="fa fa-shopping-cart"></i>
+                             </a>
+                            </li>
                        
                         </ul>        
         
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
+                    
                         <!-- ***** Menu End ***** -->
                     </nav>
                 </div>

@@ -122,7 +122,7 @@ a:hover {
 	height: 100%;
 }
 
-.product header, .product .content {
+.product #ImgCart, .product .content {
 	background-color: #fff;
 	border: 1px solid #ccc;
 	border-style: none none solid none;
@@ -130,7 +130,7 @@ a:hover {
 	
 }
 
-.product header {
+.product #ImgCart {
 	background: #000;
 	margin: 0 1% 20px 0;
 	overflow: hidden;
@@ -140,15 +140,15 @@ a:hover {
 	height: 195px;
 }
 
-.product header:hover img {
+.product #ImgCart:hover img {
 	opacity: .7;
 }
 
-.product header:hover h3 {
+.product #ImgCart:hover h3 {
 	bottom: 73px;
 }
 
-.product header h3 {
+.product #ImgCart h3 {
 	background: #53b5aa;
 	color: #fff;
 	font-size: 22px;
@@ -311,7 +311,7 @@ a:hover {
 	font-size: 20px;
 	font-weight: 300;
 	padding: 16px 0;
-	width: 290px;
+	width: 50px;
 	text-align: center;
 
 	-webkit-transition: all .2s linear;

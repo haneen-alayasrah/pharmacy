@@ -4,25 +4,36 @@ session_start();
 echo "<pre>";
 // print_r($_SESSION);
 echo "</pre>";
+if(isset($_SESSION['login'])){
+    if ($_SESSION['login']=='false') {
+        $display2 = 'none';
+    }  
+}else  $display2 = 'none';
+
+if (isset($_SESSION['login'])) {
+
 if ($_SESSION['login']=='true'){
     $display = 'none';
 }
-if ($_SESSION['login']=='false'){
-    $display2 = 'none';
-}
+
 if ($_SESSION['login']=='true'){
     $id                 = $_SESSION['users']['id'];
     $users_query        = "SELECT * FROM user WHERE user_id=$id";
     $users_query_result = mysqli_query($conn,$users_query);
     $row                = mysqli_fetch_assoc($users_query_result);
+    $row['user_fullname'] = explode(" ",$row['user_fullname']);
+    $row['user_fullname'] = $row['user_fullname'][0];
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart']=['user_id'=>$id,'items'=>[0,-1]];
+    }
+  
+}
 }
 if (isset($_POST['logout'])){
     $_SESSION['login']='false';
     header('Location: http://localhost/pharmacy/account/login.php');
 }
 ?>
-                                
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +52,8 @@ if (isset($_POST['logout'])){
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
 
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
@@ -75,8 +88,8 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="assets/images/logoo.png" width="100px" height="80px">
+                        <a href="index.php" class="logo">
+                            <img src="assets/images/logoo2.png" width="100px" height="80px">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -110,8 +123,11 @@ https://templatemo.com/tm-571-hexashop
                                     </li>
                                 </ul>
                             </li>
-       
-                           
+                            <li style="display:<?php echo@$display2; ?> ;">
+                            <a href="http://localhost/pharmacy/money/cart.php">
+                             <i style="padding-top: 13px;"  class="fa fa-shopping-cart"></i>
+                             </a>
+                            </li>
                            
                         </ul>        
                         <a class='menu-trigger'>

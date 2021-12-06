@@ -1,4 +1,4 @@
-
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +15,7 @@
     <div class="container mt-4">
     <?php include("../admin/includes/config.php");?>
     <?php
-        $user_id = $_GET['id'];
+        $user_id = $_SESSION['users']['id'];
         $cities = ['Amman','Irbid','Jarash','Blue City','Ajloun'];
         $select = "SELECT * FROM user where user_id = $user_id";
         $res=$conn->query($select);
@@ -46,11 +46,6 @@
                         <input type="text" class="form-control" value="<?php echo @$row['user_fullname']?>" placeholder="Enter your name..." name="fullname" required>
                         <i class="fa fa-user-circle"></i>
                     </div>
-                    <div class="form-group">
-                        <small>Address</small>
-                        <input type="text" class="form-control" value="<?php echo @$row['user_location']?>" placeholder="Enter your address..." name="address" required>
-                        <i class="fa fa-home"></i>
-                    </div>
                     
                     <div class="inline_address">
                         <div class="form-group">
@@ -73,49 +68,42 @@
                         </label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-4" onclick="validateForm()">Continue</button>
+                <a href="http://localhost/pharmacy/">
+                <button type="submit" class="btn btn-primary mt-4" onclick="validateForm()">Confirm</button>
+                </a>
             </form>
-
+            <?php
+                if(isset($_SESSION['cart'])){
+                    $NOI=count($_SESSION['cart']['items']);
+                    $arr=implode(",",($_SESSION['cart']['items']));
+                    $select = "SELECT item_id,item_name,item_price FROM item where item_id in($arr) ";
+                    $res = $conn->query($select);
+                    
+                }
+            ?>
             <div class="cart rounded">
-                <div class="items">
-                    <div class="item">
-                        <img src="photo1.png" class="rounded img-fluid">
-                        <div class="details">
-                            <p class="item_name">Vintage Backbag</p>
-                            <p class="item_value">$54.99 <span>$94.99</span></p>
-                            <div class="box_counter">
-                                <i class="fa fa-minus-square" onclick="amountChange(1,'-')"></i>
-                                <span class="count">1</span>
-                                <i class="fa fa-plus-square" onclick="amountChange(1,'+')"></i>
-                            </div>
-                        </div>                 
-                    </div>
-                    <div class="item">
-                        <img src="photo2.png" class="rounded img-fluid">
-                        <div class="details">
-                            <p class="item_name">Levi shoes</p>
-                            <p class="item_value">$74.99 <span>$124.99</span></p>
-                            <div class="box_counter">
-                                <i class="fa fa-minus-square" onclick="amountChange(2,'-')"></i>
-                                <span class="count">1</span>
-                                <i class="fa fa-plus-square" onclick="amountChange(2,'+')"></i>
-                            </div>
-                        </div>                 
-                    </div>
-                </div>        
-                <div class="bottom_row">
-                    <p>Shipping</p>
+                <strong>Order Summary</strong>
+                <br>
+                <br>
+                <strong>Number Of Items = <?php echo $NOI-2;?> </strong>
+                <div>
+                    <?php while ($row=$res->fetch_assoc()):?>
+                    <div class="bottom_row"> <b><?php echo $row['item_name'];?></b> <b><?php echo $row['item_price']." $";?></b></div>
+                    <?php endwhile;?>
+                </div>   
+                <div class="bottom_row" style="display: none;">
+                    <p>Shipping</p> 
                     <p>$19</p>
                 </div>    
                 <div class="bottom_row">
                     <p>Total</p>
-                    <p>$148.98</p>
+                    <p><?php echo $_SESSION['full_price'];?></p>
                 </div>    
             </div>
         </section>
         <footer>
-            <span><a href="https://github.com/Kunal-khanwalkar">Kunal Khanwalkar</a></span>
-            <span><a href="https://devchallenges.io/">@DevChallenges.io</a></span>
+            <span></span>
+            <span></span>
         </footer>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

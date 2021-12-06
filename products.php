@@ -4,14 +4,7 @@
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading" id="top">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="inner-content">
-                        <h2>Check Our Products</h2>
-                        <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
-                    </div>
-                </div>
-            </div>
+         
         </div>
     </div>
     <!-- ***** Main Banner Area End ***** -->
@@ -41,6 +34,7 @@ $query_run = mysqli_query($conn, $query);
                     <div class="section-heading">
                         <h2><?php echo $row['cat_name'];?></h2>
                         <span>Check out all of our products.</span>
+                        <hr>
                     </div>
                 </div>
             </div>
@@ -66,14 +60,14 @@ $query_run = mysqli_query($conn, $query);
                             <div class="hover-content">
                                 <ul>
                                     <li><a href="single-product.php?id=<?php echo $row['item_id']?>"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.php?id=<?php echo $row['item_id']?>"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
+                                    <li><a href="money/addtocart.php?id=<?php echo $row['item_id']?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>   
                             </div>
                             <img src="admin/assets/item_images/<?php echo $row['item_image'];?>" alt="">
                         </div>
                         <div class="down-content">
                             <h4><?php echo $row['item_name'];?></h4>
-                            <span><?php echo $row['item_price'];?> JD</span>
+                            <span> $<?php echo $row['item_price'];?></span>
                             <ul class="stars">
                                 <li><i class="fa fa-star"></i></li>
                                 <li><i class="fa fa-star"></i></li>
@@ -95,10 +89,10 @@ $query_run = mysqli_query($conn, $query);
                 <div class="col-lg-12">
                     <div class="pagination">
                         <ul>
-                            <li>
+                            <li class="active">
                                 <a href="#">1</a>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="#">2</a>
                             </li>
                             <li>

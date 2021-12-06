@@ -1,29 +1,49 @@
-	<?php include("../admin/includes/config.php");?>
-	<?php 
-	$select = "SELECT * FROM item ";
+<?php include("../admin/includes/config.php");?>	
+<?php
+
+	if ($_SESSION['login']=='false') {
+	?><script>
+	alert("Go and Login");
+	
+</script>
+<div>
+	<a href="../account/login.php">LOGIN</a>
+</div>
+<?php
+	}else{
+	if (isset($_GET['id'])) {
+		if (isset($_GET['method'])) {
+		unset($_SESSION['cart']['items'][array_search($_GET['id'],$_SESSION['cart']['items'])]);
+	}
+}
+		
+	$arr=implode(",",($_SESSION['cart']['items']));
+
+	$select = "SELECT * FROM item where item_id in($arr) ";
 	$res = $conn->query($select);
-	$row=$res->fetch_assoc();
-	$full_price=0;
+	
+	 $_SESSION['full_price']=0;
+	
 	?>
 
     <div class="container">
 		<div style="margin-top: 100px;">
 		<h1>Shopping Cart</h1>
 		</div>
-	
+	<?php while($row=$res->fetch_assoc()):?>
 		<section id="cart"> 
 			<article class="product">
-				<header>
+				<header id="ImgCart">
 				
 						<img src="../admin/assets/item_images/<?php echo $row['item_image']?>" alt="">
 
-				</header>
+	</header>
 
-				<div class="content" style="overflow:auto">
+				<div class="content">
 
 					<h1><?php echo $row['item_name']?></h1>
 
-					<p><?php echo $row['item_desc']?></p>
+					<p><?php echo $row['item_title']?></p>
 
 				</div>
 
@@ -31,9 +51,12 @@
 					<span class="qt-minus">-</span>
 					<span class="qt">1</span>
 					<span class="qt-plus">+</span>
+					<a href="cart.php?method=remove&id=<?php echo $row['item_id']?>">
+					<button type="button" style="width: 70; height:48px;" class="btn btn-outline-danger qt"><i class="bi bi-trash"></i></button>
+					</a>
 
 					<h2 class="full-price">
-						<?php echo $row['item_price']." $"?>
+						<?php $_SESSION['full_price'] += $row['item_price']; echo $row['item_price']." $"?>
 					</h2>
 
 					<h2 class="price">
@@ -44,59 +67,26 @@
 
 			
         </section>
-		<section id="cart"> 
-			<article class="product">
-				<header>
-				<?php $row=$res->fetch_assoc();?>
-				<?php $row=$res->fetch_assoc();?>
-				<?php $row=$res->fetch_assoc();?>
-				<?php $row=$res->fetch_assoc();?>
-						<img src="../admin/assets/item_images/<?php echo $row['item_image']?>" alt="">
-
-				</header>
-
-				<div class="content" style="overflow:auto">
-
-					<h1><?php echo $row['item_name']?></h1>
-
-					<p><?php echo $row['item_desc']?></p>
-
-				</div>
-
-				<footer class="content">
-					<span class="qt-minus">-</span>
-					<span class="qt">1</span>
-					<span class="qt-plus">+</span>
-
-					<h2 class="full-price">
-						<?php echo $row['item_price']." $"?>
-					</h2>
-
-					<h2 class="price">
-						<?php echo $row['item_price']." $ "?>
-					</h2>
-				</footer>
-			</article>
-
-			
-        </section>
-
-	</div>
-
-	<footer id="site-footer">
+		<?php endwhile;?>
+		<footer id="site-footer">
 		<div class="container clearfix">
 
 			<div class="left">
-				<h2 class="subtotal">Subtotal: <span>163.96</span>$</h2>
-				<h3 class="tax">Taxes (5%): <span>8.2</span>$</h3>
-				<h3 class="shipping">Shipping: <span>5.00</span>$</h3>
+				<h2 class="subtotal">Subtotal: <span>0</span>$</h2>
+				<h3 style="display: none;" class="tax">Taxes (5%): <span>0</span>$</h3>
+				<h3 class="shipping"style="display: none;" >Shipping: <span>0.00</span>$</h3>
 			</div>
 
 			<div class="right">
-				<h1 class="total">Total: <span>177.16</span>$</h1>
+				<h1 class="total">Total: <span><?php echo $_SESSION['full_price'];?></span>$</h1>
 				<a class="btn" href="index.php?id=1" >Checkout</a>
 			</div>
 
 		</div>
 	</footer>
+
+	</div>
+
+	
+	<?php }?>
 	

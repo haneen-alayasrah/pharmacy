@@ -1771,9 +1771,9 @@ Single Product Page
   
 }
 .thumb{
-  box-shadow: -3px 13px 28px -17px rgba(0,0,0,0.75);
-  -webkit-box-shadow: -3px 13px 28px -17px rgba(0,0,0,0.75);
-  -moz-box-shadow: -3px 13px 28px -17px rgba(0,0,0,0.75);
+  box-shadow: -3px 0px 28px -17px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -3px 0px 28px -17px rgba(0,0,0,0.75);
+  -moz-box-shadow: -3px 0px 28px -17px rgba(0,0,0,0.75);
 }
 
 .total .main-border-button a {
@@ -1851,10 +1851,11 @@ About Us Page
 .about-page-heading {
   margin-top: 160px;
   margin-bottom: 30px;
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../images/about.jpg);
+  background: linear-gradient( #0096db,#0096db);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+
 }
 
 .about-us {

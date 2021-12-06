@@ -5,16 +5,15 @@ include("admin/includes/config.php");
     <!-- ***** Header Area End ***** -->
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="left-content">
                         <div class="thumb">
                             <div class="inner-content">
                                 <h4 class='p-3 mb-2 bg-white ' style="opacity: .75;">We Are A Pharmacy</h4>
-                               
                             </div>
-                            <img src="assets/images/main.png" alt="">
+                            <img  src="assets/images/main.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -43,7 +42,7 @@ include("admin/includes/config.php");
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="admin/assets/categories_images/<?php echo $row_cat["cat_image"]; ?>" width="100%" height="300px" style='  border-style: groove;border-width: 2px;border-color: blue; '>
+                                        <img src="admin/assets/categories_images/<?php echo $row_cat["cat_image"]; ?>" width="100%" height="255px" style='  border-style: groove;'>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +63,6 @@ include("admin/includes/config.php");
                 <div class="col-lg-6">
                     <div class="section-heading">
                         <h2>Proudcts Latest </h2>
-                        <span>Details to details is what makes Hexashop different from the other themes.</span>
                     </div>
                 </div>
             </div>
@@ -83,15 +81,15 @@ include("admin/includes/config.php");
                                 $query_item=mysqli_query($conn,$select_item);
                                              
                                 while($row_item=mysqli_fetch_assoc($query_item)){ ?>
-                            <div class="item">
+                            <div class="item" >
                                 <div class="thumb">
                                     <div class="hover-content">
-                                        <div class="inner_item" style="background-color:black;opacity:0.8;">
-                                        <p style="color:white;"><?php echo $row_item['item_title']?></p>
+                                        <div class="inner_item" style="background-color:white;opacity:1">
+                                        <p style="color:black;font-weight:bolder"><?php echo $row_item['item_title']?></p>
                                         </div>
                                     </div>
                                     <a href="single-product.php?id=<?php echo $row_item['item_id'];?>">
-                                    <img src="admin/assets/item_images/<?php echo $row_item["item_image"]; ?>" alt="">
+                                    <img  src="admin/assets/item_images/<?php echo $row_item["item_image"]; ?>" alt="">
                                     </a>
                                 </div>
                                 <div class="down-content">
@@ -99,7 +97,7 @@ include("admin/includes/config.php");
                                     <h4><?php echo $row_item["item_name"]; ?></h4>
                                     </a>
                                     <span><?php echo "$". $row_item["item_price"]; ?></span>
-                                    <span> <a href=" <?php echo ($_SESSION['login']=='true')?"money/addToCart.php?id={$row_item['item_id']}" :"#"?>"><Button class="btn btn-primary">Cart +</Button></a></span>
+                                    <span> <a href=" <?php echo ($_SESSION['login']=='true')?"money/addToCart.php?id={$row_item['item_id']}" :"#"?>"><Button style="background-color:#0096db;color:white" class="btn mt-2">Add to Cart</Button></a></span>
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
@@ -126,7 +124,6 @@ include("admin/includes/config.php");
                 <div class="col-lg-6">
                     <div class="section-heading">
                         <h2>Quit Smoking</h2>
-                        <span>Details to details is what makes Hexashop different from the other themes.</span>
                     </div>
                 </div>
             </div>
@@ -139,23 +136,25 @@ include("admin/includes/config.php");
                         <?php
                                 //select item
 
-                                $select_item="SELECT item_id,item_name,item_price,item_image FROM item WHERE cat_id=2  ";
+                                $select_item="SELECT item_id,item_name,item_price,item_image,item_title FROM item WHERE cat_id=2  ";
                                 $query_item=mysqli_query($conn,$select_item);
                                              
                                 while($row_item=mysqli_fetch_assoc($query_item)){ ?>
                             <div class="item">
                                 <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                        <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="money/addToCart.php?id=<?php echo$row_item['item_id'];?>"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
+                                    <div class="hover-content" style="background-color:white;opacity:1">
+                                    <p style="color:black;font-weight:bolder"><?php echo $row_item['item_title']?></p>
                                     </div>
-                                    <img src="admin/assets/item_images/<?php echo $row_item["item_image"]; ?>" alt="">
+                                    <a href="single-product.php?id=<?php echo $row_item['item_id'];?>">
+                                    <img  src="admin/assets/item_images/<?php echo $row_item["item_image"]; ?>" alt="">
+                                    </a>
                                 </div>
                                 <div class="down-content">
+                                    <a href="single-product.php?id=<?php echo $row_item['item_id'];?>">
                                     <h4><?php echo $row_item["item_name"]; ?></h4>
+                                    </a>
                                     <span><?php echo "$". $row_item["item_price"]; ?></span>
+                                    <span> <a href=" <?php echo ($_SESSION['login']=='true')?"money/addToCart.php?id={$row_item['item_id']}" :"#"?>"><Button style="background-color:#0096db;color:white" class="btn mt-2">Add to Cart</Button></a></span>
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
@@ -181,7 +180,6 @@ include("admin/includes/config.php");
                 <div class="col-lg-6">
                     <div class="section-heading">
                         <h2>Product Offer </h2>
-                        <span>Details to details is what makes Hexashop different from the other themes.</span>
                     </div>
                 </div>
             </div>
@@ -194,30 +192,27 @@ include("admin/includes/config.php");
                         <?php
                                 //select item
 
-                                $select_item="SELECT item_id,item_name,item_price,item_image,price_offer FROM item order By price_offer DESC limit 7  ";
+                                $select_item="SELECT item_id,item_name,item_price,item_image,price_offer,item_title FROM item order By price_offer DESC limit 7  ";
                                 $query_item=mysqli_query($conn,$select_item);
                                              
                                 while($row_item=mysqli_fetch_assoc($query_item)){ ?>
                             <div class="item">
                                 <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                        <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-eye"></i></a></li>
-                                          
-                                            <li><a href="money/addToCart.php?id=<?php echo$row_item['item_id'];?>"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
+                                    <div class="hover-content" style="background-color:white;opacity:1">
+                                    <p style="color:black;font-weight:bolder"><?php echo $row_item['item_title']?></p>
                                     </div>
                                     <div class="product-badge bg-danger border-default text-body">SALE !</div> 
-
-                                    <img src="admin/assets/item_images/<?php echo $row_item["item_image"]; ?>" alt="">
+                                    <a href="single-product.php?id=<?php echo $row_item['item_id'];?>">
+                                    <img  src="admin/assets/item_images/<?php echo $row_item["item_image"]; ?>" alt="">
+                                    </a>
                                 </div>
                                 <div class="down-content">
+                                    <a href="single-product.php?id=<?php echo $row_item['item_id'];?>">
                                     <h4><?php echo $row_item["item_name"]; ?></h4>
-                                    
+                                    </a>
                                     <span style='text-decoration-line: line-through ; display:inline-block'><?php echo "$". $row_item["item_price"];?> </span>
                                     <span style='display:inline-block ; color:black ; font-weight:bold'><?php echo "$". $row_item["price_offer"];?> </span>
- 
-
+                                    <span> <a href=" <?php echo ($_SESSION['login']=='true')?"money/addToCart.php?id={$row_item['item_id']}" :"#"?>"><Button style="background-color:#0096db;color:white" class="btn mt-2">Add to Cart</Button></a></span>
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>

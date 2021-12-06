@@ -97,13 +97,12 @@ if (isset($_POST['login'])) {
         font-weight: bold;}
         .true-login{
             color: rgb(109,171,228);
-        }     
-
+        }  
     </style>
 </head>
 <body>
         <!-- Sing in  Form -->
-        <section class="sign-in">
+        <section  class="sign-in">
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
@@ -138,14 +137,6 @@ if (isset($_POST['login'])) {
                                 }  
                                   ?>
                         </form>
-                        <div class="social-login">
-                            <span class="social-label">Or login with</span>
-                            <ul class="socials">
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>

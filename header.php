@@ -89,7 +89,7 @@ https://templatemo.com/tm-571-hexashop
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.php" class="logo">
-                            <img src="assets/images/logoo2.png" width="100px" height="80px">
+                            <img class="mt-3" src="assets/images/logoo2.png" width="70px" height="60px">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -123,11 +123,12 @@ https://templatemo.com/tm-571-hexashop
                                     </li>
                                 </ul>
                             </li>
-                            <li style="display:<?php echo@$display2; ?> ;">
+                            <li class="ml-2" style="display:<?php echo@$display2; ?> ;transform: scale(0.9);">
                             <a href="http://localhost/pharmacy/money/cart.php">
-                                Cart
-                             <i style="padding-top: 13px;"  class="fa fa-shopping-cart"></i>
+                               Cart
+                               <i style="transform: scale(2);"  class="fa fa-shopping-cart mt-2 ml-1"></i>
                              </a>
+
                             </li>
                            
                         </ul>        

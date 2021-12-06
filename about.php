@@ -24,18 +24,13 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="right-content">
-                        <h4>About Us &amp; Our Skills</h4>
-                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod kon tempor incididunt ut labore.</span>
-                        <div class="quote">
-                            <i class="fa fa-quote-left"></i><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod kon tempor incididunt ut labore.</p>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod kon tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        </ul>
+                        <h4>About Us</h4>
+                        <p>Pharma Street Pharmacy is a chain retail pharmacy consisting of 10 branches distributed all over Amman, the Capital of Jordan.
+                           The company’s mission is to provide its customers with medicines, cosmetics, medical devices, and everything related to 
+                           the body care at any life stage whether it is from local or international venders.
+                            The company’s vision is to be one of the best pharmacies in Jordan by providing 
+                            high quality products and services in competitive prices and to continue spreading by opening more branches.
+                        </p>
                     </div>
                 </div>
             </div>

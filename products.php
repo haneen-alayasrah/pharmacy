@@ -57,17 +57,19 @@ $query_run = mysqli_query($conn, $query);
                 <div class="col-lg-4">
                     <div class="item">
                         <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.php?id=<?php echo $row['item_id']?>"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="money/addtocart.php?m=s&id=<?php echo $row['item_id']?>"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>   
+                                <div class="hover-content" style="background-color:white;opacity:1">
+                                <p style="color:black;font-weight:bolder"><?php echo $row['item_title']?></p>
                             </div>
-                            <img src="admin/assets/item_images/<?php echo $row['item_image'];?>" alt="">
+                                   <a href="single-product.php?id=<?php echo $row['item_id'];?>">
+                                    <img  src="admin/assets/item_images/<?php echo $row["item_image"]; ?>" alt="">
+                                    </a>
                         </div>
                         <div class="down-content">
-                            <h4><?php echo $row['item_name'];?></h4>
+                              <a href="single-product.php?id=<?php echo $row['item_id'];?>">
+                              <h4><?php echo $row["item_name"]; ?></h4>
+                              </a>
                             <span> $<?php echo $row['item_price'];?></span>
+                            <span> <a href=" <?php echo ($_SESSION['login']=='true')?"money/addToCart.php?id={$row['item_id']}" :"#"?>"><Button style="background-color:#0096db;color:white" class="btn mt-2">Add to Cart</Button></a></span>
                             <ul class="stars">
                                 <li><i class="fa fa-star"></i></li>
                                 <li><i class="fa fa-star"></i></li>
@@ -85,28 +87,6 @@ $query_run = mysqli_query($conn, $query);
             echo "NO Record Found";
           }
          ?>
-
-                <div class="col-lg-12">
-                    <div class="pagination">
-                        <ul>
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

@@ -23,7 +23,18 @@ $result = $conn->query($fetch_query);
 $row = $result->fetch_assoc();
 
 ?>
-
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div  class="col-md-8">
+        <div style="display: none;" id="myP1" class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+          <strong>The item Added Successfully </strong> 
+          <button   type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
 <!-- ***** Product Area Starts ***** -->
 <section class="section" id="product">
   <div class="container">
@@ -45,10 +56,6 @@ $row = $result->fetch_assoc();
             <li><i class="fa fa-star"></i></li>
           </ul>
           <span><?php echo $row["item_desc"]; ?></span>
-          <div class="quote">
-            <i class="fa fa-quote-left"></i>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.</p>
-          </div>
           <div class="quantity-content">
             <div class="left-content">
               <h6>No. of Orders</h6>
@@ -61,22 +68,10 @@ $row = $result->fetch_assoc();
           </div>
           <div class="total">
             <h4>Total: <?php echo "$" . $row["item_price"]; ?></h4>
-            <div class="main-border-button"><a href="<?php echo ($_SESSION['login'] == 'true') ? "money/addToCart.php?m=no&id={$_GET['id']}" : "#" ?>">Add To Cart</a></div>
           </div>
+          <Button  class="btn ml-3 mt-1" style="background-color:#0096db;"><a style="color:white" href="<?php echo ($_SESSION['login'] == 'true') ? "money/addToCart.php?m=no&id={$_GET['id']}" : "#" ?>">Add To Cart</a></Button>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div  class="col-md-8">
-        <div style="display: none;" id="myP1" class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-          <strong>The item Added Successfully </strong> 
-          <button   type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      </div>
-      <div class="col-md-2"></div>
     </div>
    
 
@@ -108,7 +103,7 @@ $row = $result->fetch_assoc();
               </div>
             </div>
           </div>
-          <button class="btn btn-primary mt-2" type="submit" name="publish-comment">Publish Comment</button>
+          <button class="btn mt-2" style="background-color:#0096db;color:white" type="submit" name="publish-comment">Publish Comment</button>
         </form>
       </div>
 

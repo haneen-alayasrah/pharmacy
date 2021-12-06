@@ -125,6 +125,7 @@ https://templatemo.com/tm-571-hexashop
                             </li>
                             <li style="display:<?php echo@$display2; ?> ;">
                             <a href="http://localhost/pharmacy/money/cart.php">
+                                Cart
                              <i style="padding-top: 13px;"  class="fa fa-shopping-cart"></i>
                              </a>
                             </li>

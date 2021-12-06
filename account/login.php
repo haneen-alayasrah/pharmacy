@@ -13,9 +13,7 @@ unset($_SESSION['users']);
 // unset($_SESSION['admins']);
 $_SESSION['admin']='false';
 $_SESSION['login']='false';
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
+
 if (isset($_POST['login'])) {
     $admins_query        = "SELECT * FROM admin";
     $admins_query_result = mysqli_query($conn,$admins_query);

@@ -24,6 +24,14 @@ if (isset($_POST['logout'])){
 }
 function addToCart($item_id,$link){
     array_push($_SESSION['cart']['items'],$item_id);
+    
+    if (isset($_SESSION['cat_id'])) {
+        if ($link=='s') {
+        header("Location:http://localhost/pharmacy/products.php?id={$_SESSION['cat_id']}");
+        die;
+        }
+    }
+
     if ($link!='no') {
         header("Location:http://localhost/pharmacy/index.php");
     }else header("Location:http://localhost/pharmacy/single-product.php?added=yes&id=$item_id");

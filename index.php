@@ -77,7 +77,7 @@ include("admin/includes/config.php");
                         <?php
                                 //select item
 
-                                $select_item="SELECT item_id,item_name,item_price,item_image FROM item order By item_date DESC limit 7 ";
+                                $select_item="SELECT item_id,item_name,item_price,item_image,item_title FROM item order By item_date DESC limit 7 ";
 
                                 
                                 $query_item=mysqli_query($conn,$select_item);
@@ -86,16 +86,20 @@ include("admin/includes/config.php");
                             <div class="item">
                                 <div class="thumb">
                                     <div class="hover-content">
-                                        <ul>
-                                            <li><a href="single-product.php?id=<?php echo $row_item['item_id'];?>"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="<?php echo ($_SESSION['login']=='true')?"money/addToCart.php?id={$row_item['item_id']}" :"#"?>"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
+                                        <div class="inner_item" style="background-color:black;opacity:0.8;">
+                                        <p style="color:white;"><?php echo $row_item['item_title']?></p>
+                                        </div>
                                     </div>
+                                    <a href="single-product.php?id=<?php echo $row_item['item_id'];?>">
                                     <img src="admin/assets/item_images/<?php echo $row_item["item_image"]; ?>" alt="">
+                                    </a>
                                 </div>
                                 <div class="down-content">
+                                    <a href="single-product.php?id=<?php echo $row_item['item_id'];?>">
                                     <h4><?php echo $row_item["item_name"]; ?></h4>
+                                    </a>
                                     <span><?php echo "$". $row_item["item_price"]; ?></span>
+                                    <span> <a href=" <?php echo ($_SESSION['login']=='true')?"money/addToCart.php?id={$row_item['item_id']}" :"#"?>"><Button class="btn btn-primary">Cart +</Button></a></span>
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>

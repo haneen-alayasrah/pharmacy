@@ -2341,3 +2341,8 @@ responsive
   left: 8px;
   width: 20%;
 }
+.inner_item{
+  background-color: black;
+  opacity: .8;
+  color: white;
+}

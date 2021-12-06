@@ -10,11 +10,11 @@
     <!-- ***** Main Banner Area End ***** -->
 
     <?php
-
 $query = "SELECT item_id,item_name,item_title,item_desc,item.cat_id as item_cat_id,item_price,price_offer,
 item_date,item_image
 FROM item 
 WHERE item.cat_id={$_GET['id']}";
+$_SESSION['cat_id']= $_GET['id'];
 $select_cat="SELECT * FROM category WHERE cat_id={$_GET['id']}";
 $query_run_cat = mysqli_query($conn, $select_cat);
 
@@ -60,7 +60,7 @@ $query_run = mysqli_query($conn, $query);
                             <div class="hover-content">
                                 <ul>
                                     <li><a href="single-product.php?id=<?php echo $row['item_id']?>"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="money/addtocart.php?id=<?php echo $row['item_id']?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="money/addtocart.php?m=s&id=<?php echo $row['item_id']?>"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>   
                             </div>
                             <img src="admin/assets/item_images/<?php echo $row['item_image'];?>" alt="">

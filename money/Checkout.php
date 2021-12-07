@@ -141,9 +141,9 @@ https://templatemo.com/tm-571-hexashop
     </div>
     <?php include("../admin/includes/config.php"); ?>
     <?php
-    if (!isset($_SESSION['itemat'])) {
+   
       $_SESSION['itemat'] = " ";
-    }
+    
 
     $_SESSION['full_price'] = 0;
     if (isset($_SESSION['login'])) {
@@ -209,7 +209,7 @@ https://templatemo.com/tm-571-hexashop
 
               $cop_id = $co['coupon_id'];
               $_SESSION['cop_id'] = $cop_id;
-              $percent = $co['coupon_percentage'];
+              $_SESSION['percent'] = $co['coupon_percentage'];
             }
           }
 
@@ -220,14 +220,15 @@ https://templatemo.com/tm-571-hexashop
               <h6 class="my-0">Promo code</h6>
               <small><?php echo @$coupon ?></small>
             </div>
-            <span class="text-success"><?php echo @$percent . " %"; ?></span>
+            
+            <span class="text-success"><?php echo @$_SESSION['percent'] . " %"; ?></span>
           </li>
-          <?php $dis = $_SESSION['full_price'] * @$percent / 100; ?>
+          <?php $_SESSION['dis'] = $_SESSION['full_price'] * @$_SESSION['percent'] / 100; ?>
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (USD)</span>
             <strong>$<?php
-            $_SESSION['full_price'] = $_SESSION['full_price'] - $dis;
-             echo ( $_SESSION['full_price'] ); ?></strong>
+            $fp = $_SESSION['full_price'] - $_SESSION['dis'];
+             echo ( $fp ); ?></strong>
           </li>
         </ul>
 
@@ -278,7 +279,7 @@ https://templatemo.com/tm-571-hexashop
 
             <div class="col-12 mt-3">
               <label for="address" class="form-label">City</label>
-              <input type="text" class="form-control" value="<?php echo @$row['city']?>" name="city" id="address" placeholder="Amman, Irbid, Bluecity" required="">
+              <input type="text" class="form-control" value="<?php echo @$row['user_city']?>" name="city" id="address" placeholder="Amman, Irbid, Bluecity" required="">
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>
@@ -319,6 +320,9 @@ https://templatemo.com/tm-571-hexashop
 </div>
 <?php
 $SixDigitRandomNumber = rand(100000, 999999);
+// echo $_SESSION['dis']."<br>";
+// echo $_SESSION['full_price']."<br>";
+// echo $fp;
 if (isset($_REQUEST['submit_payment'])) { ?>
   <script>
     document.getElementById("myP1").style.display = "block";
@@ -331,6 +335,8 @@ if (isset($_REQUEST['submit_payment'])) { ?>
   $arr = $_SESSION['itemat'];
 
   unset($_SESSION['itemat']);
+  unset($_SESSION['dis']);
+  unset($_SESSION['percent']);
   $update  = "UPDATE user set user_city ='{$_POST['city']}' where user_id = $user_id ";
   $arr1=str_replace("'"," ",$arr);
   if (isset($_SESSION['cop_id'])) {
@@ -339,17 +345,17 @@ if (isset($_REQUEST['submit_payment'])) { ?>
 
   if (!empty($cop_id)) {
     $insert  = "INSERT INTO history(history_id,user_id,item_id,history_date,coupon_id,order_price)
-                    VALUES ($SixDigitRandomNumber,$user_id,'$arr1','$date',$cop_id,{$_SESSION['full_price']})";
+                    VALUES ($SixDigitRandomNumber,$user_id,'$arr1','$date',$cop_id,$fp)";
   } else {
 
     $insert  = "INSERT INTO history(history_id,user_id,item_id,history_date,coupon_id,order_price)
-                    VALUES ($SixDigitRandomNumber,$user_id,'$arr1','$date',0,{$_SESSION['full_price']})";
+                    VALUES ($SixDigitRandomNumber,$user_id,'$arr1','$date',0,$fp)";
   }
   unset($_SESSION['cop_id']);
   $conn->query($update);
   $conn->query($insert);
-  echo $conn->error;
-  echo "<meta http-equiv='refresh' content='0; URL=  http://localhost/pharmacy/money/thanks.php?order_it=$SixDigitRandomNumber'>";
+
+  echo "<meta http-equiv='refresh' content='0; URL=  http://localhost/pharmacy/money/thanks.php?order_it=$SixDigitRandomNumber&price=$fp'>";
 
 }
 include("footerMoney.php"); ?>

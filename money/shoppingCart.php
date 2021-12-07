@@ -69,7 +69,8 @@ if ($_SESSION['login'] == 'false') { ?>
           <div class="row d.flex justify-content-between">
   
             <div class="back-to-shop"><a href="http://localhost/pharmacy/index.php">&leftarrow; <span class="text-muted">Back to shop</span></a></div>
-            <div class="back-to-shop"><a href="checkout.php"><span class="text-muted">Checkout</span> &rightarrow;</a></div>
+            
+            <div class="back-to-shop"><a href="<?php echo (count($_SESSION['cart']['items'])>0? "checkout.php":"http://localhost/pharmacy/index.php")?>"><span class="text-muted"><?php echo (count($_SESSION['cart']['items'])>0? "Checkout":"Add Items");?></span> &rightarrow;</a></div>
           </div>
         </div>
 

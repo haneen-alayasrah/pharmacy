@@ -12,6 +12,10 @@ $orders= mysqli_num_rows($query_run2);
 $query_item = "SELECT * FROM item" ;
 $query_run3=mysqli_query($conn , $query_item);
 $items= mysqli_num_rows($query_run3);
+
+$sales="SELECT SUM(order_price) FROM history";
+$row=mysqli_query($conn , $sales);
+$sum = mysqli_fetch_assoc($row);
 ?>
 <?php
 //Header of the Page
@@ -41,10 +45,10 @@ include("includes/header.php");
           <div class="card mb-3 widget-content bg-arielle-smile">
             <div class="widget-content-wrapper text-white">
               <div class="widget-content-left">
-                <div class="widget-heading">No. of Items</div>
+                <div class="widget-heading">Total Sales</div>
               </div>
               <div class="widget-content-right">
-                <div class="widget-numbers text-white"><span><?php echo $items; ?></span></div>
+                <div class="widget-numbers text-white"><span><?php echo $sum['SUM(order_price)']; ?></span></div>
               </div>
             </div>
           </div>

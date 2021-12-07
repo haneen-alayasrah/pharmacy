@@ -319,7 +319,6 @@ https://templatemo.com/tm-571-hexashop
 </div>
 <?php
 $SixDigitRandomNumber = rand(100000, 999999);
-echo $SixDigitRandomNumber;
 if (isset($_REQUEST['submit_payment'])) { ?>
   <script>
     document.getElementById("myP1").style.display = "block";

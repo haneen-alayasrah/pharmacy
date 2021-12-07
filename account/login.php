@@ -10,7 +10,6 @@ if (isset($_SESSION['login'])) {
   }
 }
 unset($_SESSION['users']);
-// unset($_SESSION['admins']);
 $_SESSION['admin'] = 'false';
 $_SESSION['login'] = 'false';
 

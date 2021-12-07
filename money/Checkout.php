@@ -1,4 +1,4 @@
-<?php include("headerCArt.php"); ?>
+<?php include("headerCArt.php");?>
 
 <div class="container mt-5">
   <main>
@@ -8,6 +8,10 @@
     </div>
     <?php include("../admin/includes/config.php"); ?>
     <?php
+    if (!isset($_SESSION['itemat'])) {
+      $_SESSION['itemat']=" ";
+    }
+    
     $_SESSION['full_price']=0;
     if (isset($_SESSION['login'])) {
       if ($_SESSION['login'] == 'true') {
@@ -18,10 +22,12 @@
     } else header("Location:http://localhost/pharmacy/account/signup.php");
 
     if (isset($_SESSION['cart'])) {
-      $NOI = count($_SESSION['cart']['items'])-2;
+      $NOI = count($_SESSION['cart']['items'])-1;
       $arr = implode(",", ($_SESSION['cart']['items']));
+      
       $select = "SELECT item_id,item_name,item_price, item_title FROM item where item_id in($arr) ";
       $res = $conn->query($select);
+      
     }
     
     ?>
@@ -44,7 +50,11 @@
           <span class="badge  rounded-pill" style="background-color: #0096db; color:white"><?php echo $NOI;?></span>
         </h4>
         <ul class="list-group mb-3">
-          <?php while($row= $res->fetch_assoc()):?>
+          <?php while($row= $res->fetch_assoc()):
+            $_SESSION['itemat'].="-".$row['item_name'];
+            
+            ?>
+           
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
               <h6 class="my-0"><?php echo $row['item_name'];?></h6>
@@ -54,17 +64,23 @@
           </li>
           <?php endwhile;?>
           <?php 
+         
           if (isset($_POST['promo'])) {
-            $promo = $_POST['promo'];
+              $promo = $_POST['promo'];
               $select = "SELECT * FROM coupon WHERE coupon_code = '$promo'";
-             
+              
               if ($conn->query($select)) {
                 $res_co=$conn->query($select);
                 $coupon = $promo;
-                $percent = $res_co->fetch_assoc()['coupon_percentage'];
+                $co=$res_co->fetch_assoc();
+                
+                $cop_id = $co['coupon_id'];
+                $_SESSION['cop_id'] = $cop_id;
+                $percent =$co['coupon_percentage'];                
               }
-           
+             
           }
+          
           ?>
           
           <li class="list-group-item d-flex justify-content-between bg-light">
@@ -89,12 +105,14 @@
         </form>
       </div>
       <?php 
+  
        $select = "SELECT * FROM user where user_id = $user_id";
        $res = $conn->query($select);
        $row = $res->fetch_assoc();
        $row['user_fullname'] = explode(" ", $row['user_fullname']);
        $last_name = $row['user_fullname'][1];
        $row['user_fullname'] = $row['user_fullname'][0];
+       
         ?>
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3 mt-2">Billing address</h4>
@@ -166,14 +184,34 @@
   </main>
 </div>
 <?php
+  
 if (isset($_REQUEST['submit_payment'])){?>
       <script>
           document.getElementById("myP1").style.display = "block";
       </script>   
 <?php 
-$update  = "UPDATE user set user_city ='{$_POST['city']}' where user_id = $user_id ";
-$conn->query($update);
 
+$date  = date('Y-m-d');
+unset($_SESSION['cart']['items']);
+$_SESSION['cart']['items']=[-1];
+$arr=$_SESSION['itemat'];
+print_r($_SESSION['itemat']);
+
+unset($_SESSION['itemat']);
+$update  = "UPDATE user set user_city ='{$_POST['city']}' where user_id = $user_id ";
+
+$cop_id=$_SESSION['cop_id'];
+if ($cop_id!=-1) {
+  $insert  = "INSERT INTO history(user_id,item_id,history_date,coupon_id)
+                    VALUES ($user_id,'$arr','$date',$cop_id)";
+}else{
+  echo "I'm here <br>";
+  $insert  = "INSERT INTO history(user_id,item_id,history_date,coupon_id)
+                    VALUES ($user_id,'$arr','$date',0)";
+}
+
+$conn->query($update);
+$conn->query($insert);
 
 }
  include("footerMoney.php"); ?>

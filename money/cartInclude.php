@@ -1,5 +1,6 @@
 <?php include("../admin/includes/config.php"); ?>
 <?php
+session_start();
 if ($_SESSION['login'] == 'false') { ?>
   <script>
     alert("Go and Login");

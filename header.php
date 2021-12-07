@@ -24,10 +24,9 @@ if ($_SESSION['login']=='true'){
     $row['user_fullname'] = explode(" ",$row['user_fullname']);
     $row['user_fullname'] = $row['user_fullname'][0];
     if (!isset($_SESSION['cart']['items'])) {
-        $_SESSION['cart']=['user_id'=>$id,'items'=>[-1]];
+        $_SESSION['cart']=['user_id'=>$id,'items'=>[]];
     }
     $number = count($_SESSION['cart']['items']);
-  print_r($number);
 }
 }
 if (isset($_POST['logout'])){
@@ -128,7 +127,7 @@ https://templatemo.com/tm-571-hexashop
                             <a href="http://localhost/pharmacy/money/cart.php">
                                <i style="transform: scale(2);"  class="fa fa-shopping-cart mt-2 ml-1"></i>
                                <div  style="width:25;height:25; opacity:0.7;  background: red;display:inline-block; text-align:center; border-radius:50%; position:absolute; left:30;
-                               top:-12;"><p style="font-size: 12px; color:white;"><?php echo $number-1;?></p> </div>
+                               top:-12;"><p style="font-size: 12px; color:white;"><?php echo $number;?></p> </div>
                              </a>
 
                             </li>

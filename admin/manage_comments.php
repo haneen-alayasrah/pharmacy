@@ -77,7 +77,7 @@ session_start();
 </div>
 <?php include("includes/javascript.php"); 
    ?>
+<script type="text/javascript" src="./assets/scripts/main.js"></script>
 <script>
     document.getElementById("manage-comments").classList.add("mm-active")
 </script>
-<script type="text/javascript" src="./assets/scripts/main.js"></script>

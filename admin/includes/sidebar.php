@@ -84,7 +84,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="manage_coupon.php" id="manage-comments">
+                    <a href="manage_coupon.php" id="manage-coupon">
                         <i class="metismenu-icon fas fa-percentage"></i>
                         Coupon
                     </a>

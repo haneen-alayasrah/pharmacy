@@ -43,6 +43,7 @@ if (isset($_GET['method'])) {
     $item_descE         = $row['item_desc'];
     $item_priceE        = $row['item_price'];
     $item_price_offerE  = $row['price_offer'];
+    $item_imageE        = $row['item_image'];
     if (isset($_POST['edit'])) {
       $item_name        = $_POST['item_name'];
       $item_title       = $_POST['item_title'];
@@ -107,8 +108,7 @@ include("includes/header.php");
                     <select class="form-control" name="item_cat" id="validationCustom03" required>
                       <option value="">Select Category</option>
                       <?php while ($row = mysqli_fetch_assoc($cat_query_result)) { ?>
-                        <option value="<?php echo $row['cat_id']; ?>"><?php echo $row['cat_name'];
-                                                                    } ?></option>
+                        <option <?php echo isset($_GET['method']) && ($_GET['method'] == 'edit') &&  ($item_catE==$row['cat_id'])?'selected':"";?> value="<?php echo $row['cat_id']; ?>"><?php echo $row['cat_name'];                                             } ?></option>
                     </select>
                     <div class="valid-feedback">
                       Looks good!

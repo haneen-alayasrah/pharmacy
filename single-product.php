@@ -94,7 +94,7 @@ $row = $result->fetch_assoc();
               </div>
             </div>
           </div>
-          <button class="btn mt-2" style="background-color:#0096db;color:white" type="submit" name="publish-comment">Publish Comment</button>
+          <button class="btn mt-2" style="background-color:#0096db;color:white" type="submit" name="publish-comment">Comment</button>
         </form>
         <br><br>
         <h5 class="mb-2">Reviews</h5>

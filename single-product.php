@@ -77,7 +77,7 @@ $row1=$result1->fetch_assoc();
 
     <?php
 
-    if (isset($_POST["publish-comment"])) {
+    if (isset($_POST["publish-comment"])&&isset($_SESSION['login'])&& $_SESSION['login']=='true') {
 
       $comment_statment = $_POST["comment-input"];
 

@@ -76,7 +76,6 @@ if ($register1 == true && $register2 == true && $register3 == true && $register4
         $class              = 'false';
         }
         if ($check == true){
-        $registerM          = "You Have Register Successfully";
         $register           = "can";
         $class              = 'true';
         $name               = $_POST['name'];
